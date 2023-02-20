@@ -14,21 +14,21 @@ model Users {
   id Int @id @default(autoincrement())
   name String
   password String
-  management Boolean
+  management Boolean @default(false)
 }
 
 model Drivers {
   id Int @id @default(autoincrement())
   name String
   licence Int
-  availability Boolean
+  availability Boolean @default(true)
 }
 
 model Fleet {
   id Int @id @default(autoincrement())
   type String
   plate String
-  availability Boolean
+  availability Boolean @default(true)
   maintenance Maintenance[]
 }
 
