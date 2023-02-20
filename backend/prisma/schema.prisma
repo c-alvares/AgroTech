@@ -20,7 +20,7 @@ model Users {
 model Drivers {
   id Int @id @default(autoincrement())
   name String
-  licence Int
+  licence String
   availability Boolean @default(true)
 }
 
