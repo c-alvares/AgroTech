@@ -20,7 +20,7 @@ model Users {
 model Drivers {
   id Int @id @default(autoincrement())
   name String
-  licence String
+  licence String @unique
   availability Boolean @default(true)
 }
 
@@ -35,8 +35,9 @@ model Fleet {
 model Maintenance {
   id Int @id @default(autoincrement())
   checkin DateTime @default(now())
-  checkout DateTime @default(now())
+  checkout DateTime?
   description String
   vehicle_id Int
   vehicle Fleet @relation(fields: [vehicle_id], references: [id], onDelete: Cascade) 
 }
+// ? indica que o campo é opcional, não havendo necessidade de passá-lo ao cadastrar.
