@@ -16,7 +16,20 @@ const read = async (req, res) => {
     res.status(200).json(users).end();
 };
 
+const update = async (req, res) => {
+    let { name, password } = req.body;
+    let users = await prisma.Users.update({
+        where: {
+            name,
+        },
+        data: {
+            password,
+        }
+    })
+}
+
 module.exports = {
     create,
-    read
+    read,
+    update,
 }
