@@ -4,6 +4,7 @@ const cors = require('cors');
 const users = require('./src/routes/usuarios.route');
 const drivers = require('./src/routes/motoristas.route');
 const fleet = require('./src/routes/frota.route');
+const gear = require('./src/routes/manutencao.route');
 
 const app = express();
 
@@ -12,6 +13,7 @@ app.use(express.json());
 app.use(users);
 app.use(drivers);
 app.use(fleet);
+app.use(gear);
 
 app.listen(3000, () => {
     console.log("Rodando");
