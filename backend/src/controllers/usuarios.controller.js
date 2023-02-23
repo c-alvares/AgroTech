@@ -10,11 +10,23 @@ const create = async (req, res) => {
     res.status(201).json(user).end();
 }
 
+
 const read = async (req, res) => {
     let users = await prisma.Users.findMany();
 
     res.status(200).json(users).end();
 };
+
+
+const readOne = async (req, res) => {
+    let users = await prisma.Users.findUnique({
+        where: {
+            id: Number(req.params.id) 
+        },
+    });
+    res.status(200).json(users).end();
+};
+
 
 const update = async (req, res) => {
     let { name, password } = req.body;
@@ -28,12 +40,42 @@ const update = async (req, res) => {
             password,
         }
     });
-    console.log(users)
+
     res.status(200).json(users).end();
+}
+
+
+const updateLevel = async (req, res) => {
+    let { management } = req.body;
+
+    let users = await prisma.Users.update({
+        where: {
+            id: Number(req.params.id) 
+        },
+        data: {
+            management
+        }
+    });
+
+    res.status(200).json(users).end();
+}
+
+
+const remove = async (req, res) => {
+    let user = await prisma.Users.delete({
+        where: {
+            id: Number(req.params.id)
+        }
+    });
+
+    res.status(200).json(user).end();
 }
 
 module.exports = {
     create,
     read,
+    readOne,
     update,
+    updateLevel,
+    remove
 }
