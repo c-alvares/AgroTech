@@ -18,14 +18,18 @@ const read = async (req, res) => {
 
 const update = async (req, res) => {
     let { name, password } = req.body;
+
     let users = await prisma.Users.update({
         where: {
-            name,
+            id: Number(req.params.id) 
         },
         data: {
+            name, 
             password,
         }
-    })
+    });
+    console.log(users)
+    res.status(200).json(users).end();
 }
 
 module.exports = {

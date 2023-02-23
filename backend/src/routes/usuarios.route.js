@@ -6,6 +6,6 @@ const User = require('../controllers/usuarios.controller');
 
 router.post('/cadastrarusuario', User.create);
 router.get('/listarusuarios', User.read);
-router.put('atualizarsenha', User.update);
+router.put('/atualizarsenha/:id', User.update);
 
 module.exports = router;
