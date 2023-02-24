@@ -28,6 +28,16 @@ const readOne = async (req, res) => {
 };
 
 
+const readByAvailability = async (req, res) => {
+    let vehicle = await prisma.Fleet.findMany({
+        where: {
+            availability: true
+        },
+    });
+    res.status(200).json(vehicle).end();
+}
+
+
 const update = async (req, res) => {
     let { type } = req.body;
     let vehicle = await prisma.Fleet.update({
@@ -73,6 +83,7 @@ module.exports = {
     create,
     read,
     readOne,
+    readByAvailability,
     update,
     updateStatus,
     remove
