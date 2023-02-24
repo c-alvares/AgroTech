@@ -3,12 +3,13 @@ const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
 const create = async (req, res) => {
-    let { vehicle_id, description } = req.body;
+    let { description, cost, vehicle_id } = req.body;
 
     const [service, vehicle] = await prisma.$transaction([
         prisma.Maintenance.create({
             data: {
                 description : description,
+                cost: cost,
                 vehicle_id : vehicle_id
             }
         }),
@@ -29,8 +30,23 @@ const create = async (req, res) => {
 
 
 const read = async (req, res) => {
-    let service = await prisma.Maintenance.findMany();
-
+    let service = await prisma.Maintenance.findMany({
+        select: {
+            id: true,
+            checkin: true,
+            checkout: true,
+            description: true,
+            cost: true,
+            vehicle: {
+                select: {
+                    id: true,
+                    type: true,
+                    plate: true
+                }
+            }
+        }
+    });
+    
     res.status(200).json(service).end();
 }
 
@@ -40,6 +56,20 @@ const readOne = async (req, res) => {
         where: {
             id: Number(req.params.id) 
         },
+        select: {
+            id: true,
+            checkin: true,
+            checkout: true,
+            description: true,
+            cost: true,
+            vehicle: {
+                select: {
+                    id: true,
+                    type: true,
+                    plate: true
+                }
+            }
+        }
     });
     res.status(200).json(service).end();
 }
@@ -54,6 +84,7 @@ const readOngoing = async (req, res) => {
             id: true,
             checkin: true,
             description: true,
+            cost: true,
 
             vehicle: {
                 select: {
@@ -69,13 +100,14 @@ const readOngoing = async (req, res) => {
 
 
 const update = async (req, res) => {
-    let { description } = req.body;
+    let { description, cost } = req.body;
     let service = await prisma.Maintenance.update({
         where: {
             id: Number(req.params.id) 
         },
         data: {
             description,
+            cost,
         }
     });
 
@@ -84,12 +116,12 @@ const update = async (req, res) => {
 
 
 const updateStatus = async (req, res) => {
-    let { vehicle_id } = req.body;
 
-    const [service, vehicle] = await prisma.$transaction([
+    const [service] = await prisma.$transaction([
         prisma.Maintenance.update({
             where: {
                 id: Number(req.params.id) 
+                // checkout: null -> retirar o params.id da manutenção e só passar o id do veículo
             },
             data: {
                 checkout: new Date(),
@@ -97,7 +129,7 @@ const updateStatus = async (req, res) => {
         }),
         prisma.Fleet.update({
             where: {
-                id: vehicle_id
+                id: Number(req.params.vehicle_id)
             },
             data: {
                 availability: true
@@ -120,6 +152,7 @@ const remove = async (req, res) => {
 
     res.status(200).json(service).end();
 }
+
 
 module.exports = {
     create,
