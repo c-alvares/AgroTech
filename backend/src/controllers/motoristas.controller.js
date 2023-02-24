@@ -27,6 +27,15 @@ const readOne = async (req, res) => {
     res.status(200).json(driver).end();
 };
 
+const readByAvailability = async (req, res) => {
+    let driver = await prisma.Drivers.findMany({
+        where: {
+            availability: true
+        },
+    });
+    res.status(200).json(driver).end();
+}
+
 const update = async (req, res) => {
     let { name, licence } = req.body;
 
@@ -73,6 +82,7 @@ module.exports = {
     create,
     read,
     readOne,
+    readByAvailability,
     update,
     updateStatus,
     remove
