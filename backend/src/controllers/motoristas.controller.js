@@ -27,6 +27,7 @@ const readOne = async (req, res) => {
     res.status(200).json(driver).end();
 };
 
+
 const readByAvailability = async (req, res) => {
     let driver = await prisma.Drivers.findMany({
         where: {
@@ -35,6 +36,7 @@ const readByAvailability = async (req, res) => {
     });
     res.status(200).json(driver).end();
 }
+
 
 const update = async (req, res) => {
     let { name, licence } = req.body;
