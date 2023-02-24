@@ -22,6 +22,7 @@ model Drivers {
   name String
   licence String @unique
   availability Boolean @default(true)
+  operation Operations[]
 }
 
 model Fleet {
@@ -30,6 +31,7 @@ model Fleet {
   plate String
   availability Boolean @default(true)
   maintenance Maintenance[]
+  operation Operations[]
 }
 
 model Maintenance {
@@ -37,7 +39,19 @@ model Maintenance {
   checkin DateTime @default(now())
   checkout DateTime?
   description String
+  cost Float
   vehicle_id Int
   vehicle Fleet @relation(fields: [vehicle_id], references: [id], onDelete: Cascade) 
 }
 // ? indica que o campo é opcional, não havendo necessidade de passá-lo ao cadastrar.
+
+model Operations {
+  id Int @id @default(autoincrement())
+  departure DateTime @default(now())
+  arrival DateTime?
+  description String
+  driver_id Int
+  vehicle_id Int
+  driver Drivers @relation(fields: [driver_id], references: [id], onDelete: Cascade)
+  vehicle Fleet @relation(fields: [vehicle_id], references: [id], onDelete: Cascade)
+}
