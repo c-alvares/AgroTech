@@ -50,6 +50,19 @@ const readOngoing = async (req, res) => {
         where: {
             checkout: null
         },
+        select: {
+            id: true,
+            checkin: true,
+            description: true,
+
+            vehicle: {
+                select: {
+                    id: true,
+                    type: true,
+                    plate: true
+                }
+            }
+        }
     });
     res.status(200).json(service).end();
 }
