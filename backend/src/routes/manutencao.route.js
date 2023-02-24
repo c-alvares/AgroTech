@@ -7,6 +7,7 @@ const Maintenance = require('../controllers/manutencao.controller');
 router.post('/cadastrarmanutencao', Maintenance.create);
 router.get('/listarmanutencoes', Maintenance.read);
 router.get('/buscarmanutencao/:id', Maintenance.readOne);
+router.get('/buscarmanutencoesemcurso/', Maintenance.readOngoing);
 router.put('/atualizartipomanutencao/:id', Maintenance.update);
 router.put('/finalizarmanutencao/:id', Maintenance.updateStatus);
 router.delete('/excluirmanutencao/:id', Maintenance.remove);

@@ -45,6 +45,16 @@ const readOne = async (req, res) => {
 }
 
 
+const readOngoing = async (req, res) => {
+    let service = await prisma.Maintenance.findMany({
+        where: {
+            checkout: null
+        },
+    });
+    res.status(200).json(service).end();
+}
+
+
 const update = async (req, res) => {
     let { description } = req.body;
     let service = await prisma.Maintenance.update({
@@ -87,6 +97,7 @@ const updateStatus = async (req, res) => {
     res.status(200).json(service).end();
 }
 
+
 const remove = async (req, res) => {
     let service = await prisma.Maintenance.delete({
         where: {
@@ -101,6 +112,7 @@ module.exports = {
     create,
     read,
     readOne,
+    readOngoing,
     update,
     updateStatus,
     remove
