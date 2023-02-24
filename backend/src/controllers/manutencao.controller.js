@@ -22,7 +22,7 @@ const create = async (req, res) => {
         })
     ]);
 
-    console.log(service, vehicle);
+    // console.log(service, vehicle);
 
     res.status(201).json(service).end();
 }
@@ -69,7 +69,6 @@ const updateStatus = async (req, res) => {
                 id: Number(req.params.id) 
             },
             data: {
-                availability: true,
                 checkout: new Date(),
             }
         }),
@@ -77,13 +76,13 @@ const updateStatus = async (req, res) => {
             where: {
                 id: vehicle_id
             },
-            data : {
+            data: {
                 availability: true
             }
         })
     ]);
 
-    console.log(service, vehicle);
+    // console.log(service, vehicle);
 
     res.status(200).json(service).end();
 }
