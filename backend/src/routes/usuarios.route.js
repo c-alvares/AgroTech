@@ -4,6 +4,7 @@ const router = express.Router();
 
 const User = require('../controllers/usuarios.controller');
 
+router.post('/acessar', User.login);
 router.post('/cadastrarusuario', User.create);
 router.get('/listarusuarios', User.read);
 router.get('/buscarusuario/:id', User.readOne);

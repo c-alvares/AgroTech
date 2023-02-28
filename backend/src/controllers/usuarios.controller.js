@@ -1,6 +1,46 @@
 const { PrismaClient } = require('@prisma/client');
+const jwt = require('jsonwebtoken');
+require('dotenv').config();
+
+const bcrypt = require('bcrypt')
 
 const prisma = new PrismaClient();
+
+let { username, password } = req.body;
+
+const login = async (req, res) => {
+    const user = await prisma.User.findMany({
+        where: {
+            AND: [
+                { username },
+                { password }
+            ]
+        },
+        select: {
+            id: true,
+            name: true,
+            username: true,
+            password: true,
+            management: true
+        }
+    });
+
+    if(user. length > 0) {
+        jwt.sign(user[0], process.env.KEY, { expiresIn: '30m' }, function (err, token) {
+            console.log(token);
+            if (err == null) {
+                user[0]["token"] = token;
+                res.status(200).json(user[0]).end();
+            }else {
+                res.status(401).json(err).end();
+            }
+        });
+    }else {
+        res.status(404).end();
+    }
+    
+}
+
 
 const create = async (req, res) => {
     let user = await prisma.Users.create({
@@ -15,7 +55,7 @@ const read = async (req, res) => {
     let users = await prisma.Users.findMany();
 
     res.status(200).json(users).end();
-};
+}
 
 
 const readOne = async (req, res) => {
@@ -25,7 +65,7 @@ const readOne = async (req, res) => {
         },
     });
     res.status(200).json(users).end();
-};
+}
 
 
 const update = async (req, res) => {
@@ -72,6 +112,7 @@ const remove = async (req, res) => {
 }
 
 module.exports = {
+    login,
     create,
     read,
     readOne,
