@@ -6,10 +6,10 @@ const Operation = require('../controllers/operacoes.controller');
 
 router.post('/criaroperacao', Operation.create);
 router.get('/listaroperacoes', Operation.read);
-// router.get('/buscarveiculo/:id', Operation.readOne);
-// router.get('/buscarveiculosdisponiveis/', Operation.readByAvailability);
-// router.put('/atualizartipo/:id', Operation.update);
-// router.put('/alterardisponibilidadeveiculo/:id', Operation.updateStatus);
-// router.delete('/excluirveiculo/:id', Operation.remove);
+router.get('/buscaroperacao/:id', Operation.readOne);
+router.get('/buscaroperacoesemcurso/', Operation.readOngoing);
+router.put('/atualizartdescricaoperacao/:id', Operation.update);
+router.put('/finalizaroperacao/:id/:driver_id/:vehicle_id', Operation.updateStatus);
+router.delete('/excluiroperacao/:id/:vehicle_id', Operation.remove);
 
 module.exports = router;
