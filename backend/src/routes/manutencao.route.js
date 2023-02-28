@@ -10,6 +10,6 @@ router.get('/buscarmanutencao/:id', Maintenance.readOne);
 router.get('/buscarmanutencoesemcurso/', Maintenance.readOngoing);
 router.put('/atualizartipomanutencao/:id', Maintenance.update);
 router.put('/finalizarmanutencao/:id/:vehicle_id', Maintenance.updateStatus);
-router.delete('/excluirmanutencao/:id', Maintenance.remove);
+router.delete('/excluirmanutencao/:id/:vehicle_id', Maintenance.remove);
 
 module.exports = router;

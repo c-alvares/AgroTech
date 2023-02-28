@@ -144,11 +144,21 @@ const updateStatus = async (req, res) => {
 
 
 const remove = async (req, res) => {
-    let service = await prisma.Maintenance.delete({
-        where: {
-            id: Number(req.params.id)
-        }
-    });
+    const [service] = await prisma.$transaction([
+        prisma.Maintenance.delete({
+            where: {
+                id: Number(req.params.id)
+            }
+        }),
+        prisma.Fleet.update({
+            where: {
+                id: Number(req.params.vehicle_id)
+            },
+            data: {
+                availability: true
+            }
+        })
+    ]);
 
     res.status(200).json(service).end();
 }
