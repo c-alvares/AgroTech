@@ -29,14 +29,14 @@ const readOne = async (req, res) => {
 
 
 const update = async (req, res) => {
-    let { name, password } = req.body;
+    let { username, password } = req.body;
 
     let users = await prisma.Users.update({
         where: {
             id: Number(req.params.id) 
         },
         data: {
-            name, 
+            username, 
             password,
         }
     });
