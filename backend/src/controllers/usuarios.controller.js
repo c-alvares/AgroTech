@@ -38,7 +38,6 @@ const login = async (req, res) => {
     }else {
         res.status(404).end();
     }
-    
 }
 
 
@@ -46,7 +45,6 @@ const create = async (req, res) => {
     let user = await prisma.Users.create({
         data: req.body
     });
-    
     res.status(201).json(user).end();
 }
 
