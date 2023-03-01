@@ -4,6 +4,8 @@ const router = express.Router();
 
 const Operation = require('../controllers/operacoes.controller');
 
+// const Middle = require('../middleware/middleware');
+
 router.post('/criaroperacao', Operation.create);
 router.get('/listaroperacoes', Operation.read);
 router.get('/buscaroperacao/:id', Operation.readOne);

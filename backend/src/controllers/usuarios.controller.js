@@ -3,17 +3,17 @@ const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
 const bcrypt = require('bcrypt')
-
 const prisma = new PrismaClient();
 
-let { username, password } = req.body;
 
 const login = async (req, res) => {
-    const user = await prisma.User.findMany({
+
+
+    const user = await prisma.Users.findMany({
         where: {
             AND: [
-                { username },
-                { password }
+                { username: req.body.username },
+                {  password: req.body.password }
             ]
         },
         select: {
