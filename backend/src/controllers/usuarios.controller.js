@@ -2,7 +2,38 @@ const { PrismaClient } = require('@prisma/client');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcrypt');
+
+const saltRounds = 10;
+var password = "Fkdj^45ci@Jad";
+var password2 = "djlfhjd(456";
+
+bcrypt.genSalt(saltRounds, function(err, salt) {
+    // returns salt
+    bcrypt.hash(password, salt, function(err, hash) {
+        // returns hash
+        console.log(hash);
+        // Store hash in database here
+        bcrypt.compare(password2, hash, function(err, result) {  // Compare
+            // if passwords match
+            if (result) {
+                  console.log("It matches!")
+            }
+            // if passwords do not match
+            else {
+                  console.log("Invalid password!");
+            }
+          });
+    });
+});
+
+
+// https://heynode.com/blog/2020-04/salt-and-hash-passwords-bcrypt/
+// https://www.npmjs.com/package/bcryptjs
+  
+// const salt = bcrypt.genSaltSync(10);
+// const hash = bcrypt.hashSync("B4c0/\/", salt);
+
 const prisma = new PrismaClient();
 
 
