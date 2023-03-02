@@ -83,6 +83,27 @@ const readOne = async (req, res) => {
 
 const update = async (req, res) => {
     let { username, password } = req.body;
+    bcrypt.hash(password, saltRounds, async function (err, hash) {
+        if(err == null) {
+            password = hash;
+            let users = await prisma.Users.update({
+                where: {
+                    id: Number(req.params.id)
+                },
+                data: {
+                    username,
+                    password
+                }
+            });
+            res.status(200).json(users).end();
+        }else {
+            res.status(500).json(err).end();
+        }
+    })
+}
+
+const update1 = async (req, res) => {
+    let { username, password } = req.body;
 
     let users = await prisma.Users.update({
         where: {
