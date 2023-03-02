@@ -2,37 +2,8 @@ const { PrismaClient } = require('@prisma/client');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
-const bcrypt = require('bcrypt');
-
-const saltRounds = 10;
-var password = "Fkdj^45ci@Jad";
-var password2 = "djlfhjd(456";
-
-bcrypt.genSalt(saltRounds, function(err, salt) {
-    // returns salt
-    bcrypt.hash(password, salt, function(err, hash) {
-        // returns hash
-        console.log(hash);
-        // Store hash in database here
-        bcrypt.compare(password2, hash, function(err, result) {  // Compare
-            // if passwords match
-            if (result) {
-                  console.log("It matches!")
-            }
-            // if passwords do not match
-            else {
-                  console.log("Invalid password!");
-            }
-          });
-    });
-});
-
-
-// https://heynode.com/blog/2020-04/salt-and-hash-passwords-bcrypt/
-// https://www.npmjs.com/package/bcryptjs
-  
-// const salt = bcrypt.genSaltSync(10);
-// const hash = bcrypt.hashSync("B4c0/\/", salt);
+const bcrypt = require('bcrypt'); // require bcrypt
+const saltRounds = 10; //  Data processing speed
 
 const prisma = new PrismaClient();
 
@@ -73,10 +44,23 @@ const login = async (req, res) => {
 
 
 const create = async (req, res) => {
-    let user = await prisma.Users.create({
-        data: req.body
-    });
-    res.status(201).json(user).end();
+    bcrypt.genSalt(saltRounds, function (err, salt) {
+        if(err == null) {
+            bcrypt.hash(req.body.password, salt, async function (errCrypto, hash) {
+                if(errCrypto == null) {
+                    req.body.password = hash;
+                    let user = await prisma.Users.create({
+                        data: req.body
+                    });
+                    res.status(201).json(user).end();
+                }else {
+                    res.status(500).json(errCrypto).end();
+                }
+            })
+        }else {
+            res.status(500).json(err).end();
+        }
+    })
 }
 
 
