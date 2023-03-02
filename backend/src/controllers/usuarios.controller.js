@@ -7,15 +7,79 @@ const saltRounds = 10; //  Data processing speed
 
 const prisma = new PrismaClient();
 
+var password = "teste";  // Original Password
+var password2 = "$2b$10$9S0D1Qq0Cbc8EQbhK5LVT.cGFk.Zhujh8wbzi91Lb9qMrWHaC.NGi";
+
+// bcrypt.hash(password, saltRounds, function(err, hash) {
+//     console.log(password, hash) // Salt + Hash
+
+//   bcrypt.compare(password2, hash, function(errCrypto, result) {  // Compare
+//     console.log(password2, hash, result)
+//     // if passwords match
+//     if (result) {
+//           console.log("It matches!")
+//     }
+//     // if passwords do not match
+//     else {
+//           console.log("Invalid password!");
+//     }
+//   });
+// });
+
 
 const login = async (req, res) => {
-
 
     const user = await prisma.Users.findMany({
         where: {
             AND: [
                 { username: req.body.username },
-                {  password: req.body.password }
+            ]
+        },
+        select: {
+            id: true,
+            name: true,
+            username: true,
+            password: true,
+            management: true
+        }
+    });
+  
+console.log(req.body.password)
+    bcrypt.hash(req.body.password, saltRounds, async function(err, hash) {
+        console.log(hash)
+        
+        bcrypt.compare(user[0].password, hash, function(errCrypto, result) {  // Compare
+            console.log(user[0].password, hash, result)
+            // if passwords match
+            if (result) {
+                  console.log("It matches!")
+                  jwt.sign(user[0], process.env.KEY, { expiresIn: '30m' }, function (err, token) {
+                      console.log(token);
+                      if (err == null) {
+                          user[0]["token"] = token;
+                          res.status(200).json(user[0]).end();
+                      }else {
+                          res.status(401).json(err).end();
+                      }
+                  });
+            }
+            // if passwords do not match
+            else {
+                  console.log("Invalid password!");
+                  res.status(401).json(err).end();
+            }
+          });
+          
+    })
+}
+
+const login1 = async (req, res) => {
+
+    const user = await prisma.Users.findMany({
+        where: {
+            AND: [
+                { username: req.body.username },
+                { password: req.body.password }
             ]
         },
         select: {
@@ -44,19 +108,14 @@ const login = async (req, res) => {
 
 
 const create = async (req, res) => {
-    bcrypt.genSalt(saltRounds, function (err, salt) {
+    bcrypt.hash(req.body.password, saltRounds, async function(err, hash) {
+        console.log(hash)
         if(err == null) {
-            bcrypt.hash(req.body.password, salt, async function (errCrypto, hash) {
-                if(errCrypto == null) {
-                    req.body.password = hash;
-                    let user = await prisma.Users.create({
-                        data: req.body
-                    });
-                    res.status(201).json(user).end();
-                }else {
-                    res.status(500).json(errCrypto).end();
-                }
-            })
+            req.body.password = hash;
+            let user = await prisma.Users.create({
+                data: req.body
+            });
+            res.status(201).json(user).end();
         }else {
             res.status(500).json(err).end();
         }
@@ -100,22 +159,6 @@ const update = async (req, res) => {
             res.status(500).json(err).end();
         }
     })
-}
-
-const update1 = async (req, res) => {
-    let { username, password } = req.body;
-
-    let users = await prisma.Users.update({
-        where: {
-            id: Number(req.params.id) 
-        },
-        data: {
-            username, 
-            password,
-        }
-    });
-
-    res.status(200).json(users).end();
 }
 
 
