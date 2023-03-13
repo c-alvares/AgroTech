@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Usuário</title>
+    <link rel="stylesheet" href="../global/global.style.css">
+    <link rel="stylesheet" href="./user_home.style.css">
+</head>
+<body>
+    <navbar>
+        <div id="navbar_img">
+            <h1>AGROTECH</h1>
+            <h3>SISTEMA DE GESTÃO DE FROTA</h3>
+        </div>
+        <div id="links">
+            <a href="../home/home.html">MODIFICAR</a>
+            <a href="../cases/cases.html">MODIFICAR</a>
+            <a href="../blog/blog.html">MODIFICAR</a>
+        </div>
+    </navbar>
+
+    <section id="container">
+
+        <table id="driversTable">
+            <caption>Lista de Motoristas</caption>
+            <thead>
+                <th>ID</th>
+                <th>MOTORISTA</th>
+                <th>LICENÇA</th>
+                <th>DISPONIBILIDADE</th>
+            </thead>
+            <tbody>
+                <tr class="driverRow model">
+                    <td id="driverIdOutput"></td>
+                    <td id="nameOutput"></td>
+                    <td id="licenceOutput"></td>
+                    <td id="driverAvailabilityOutput"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table id="fleetTable">
+            <caption>Lista de Veículos</caption>
+            <thead>
+                <th>ID</th>
+                <th>TIPO</th>
+                <th>PLACA</th>
+                <th>DISPONIBILIDADE</th>
+            </thead>
+            <tbody>
+                <tr class="fleetRow model">
+                    <td id="vehicleIdOutput"></td>
+                    <td id="tipoOutput"></td>
+                    <td id="plateOutput"></td>
+                    <td id="vehicleAvailabilityOutput"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table id="maintenanceTable">
+            <caption>Lista de Manutenções</caption>
+            <thead>
+                <th>ID</th>
+                <th>ENTRADA</th>
+                <th>SAÍDA</th>
+                <th>DESCRIÇÃO</th>
+                <th>CUSTO</th>
+                <th>ID DO VEÍCULO</th>
+                <th>TIPO</th>
+                <th>PLACA</th>
+            </thead>
+            <tbody>
+                <tr class="maintenanceRow model">
+                    <td id="maintenanceIdOutput"></td>
+                    <td id="checkinOutput"></td>
+                    <td id="checkoutOutput"></td>
+                    <td id="descriptionOutput"></td>
+                    <td id="costOutput"></td>
+                    <td id="mainVehicleIdOutput"></td>
+                    <td id="mainVehicleTypeOutput"></td>
+                    <td id="mainVehiclePlateOutput"></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </section>
+    <footer>
+        MADE BY C.ALVARES
+    </footer>
+  </body>
+  <script src="./user_home.script.js"></script>
+</html>
