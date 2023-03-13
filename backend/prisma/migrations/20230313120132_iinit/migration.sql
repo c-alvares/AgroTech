@@ -2,6 +2,7 @@
 CREATE TABLE `Users` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(191) NOT NULL,
+    `username` VARCHAR(191) NOT NULL,
     `password` VARCHAR(191) NOT NULL,
     `management` BOOLEAN NOT NULL DEFAULT false,
 
