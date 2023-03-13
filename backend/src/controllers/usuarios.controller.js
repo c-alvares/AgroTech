@@ -92,7 +92,7 @@ const login = async (req, res) => {
 
     if(user. length > 0) {
         jwt.sign(user[0], process.env.KEY, { expiresIn: '30m' }, function (err, token) {
-            console.log(token);
+            // console.log(token);
             if (err == null) {
                 user[0]["token"] = token;
                 res.status(200).json(user[0]).end();
