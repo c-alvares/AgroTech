@@ -6,22 +6,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="../global/global.style.css">
-    <link rel="stylesheet" href="style/login.style.css">
+    <link rel="stylesheet" href="./login.style.css">
 </head>
 <body>
-    <h1>AGROTECH</h1>
-    <h3>SISTEMA DE GESTÃO DE FROTA</h3>
-    <div id="login_box">
-        <form action="">
-            <h5>ENTRE COM SEUS DADOS:</h5>
-            <input id="username_input" type="text" placeholder="NOME DE USUÁRIO">
-            <input id="password_input" type="text" placeholder="SENHA">
-            <button onclick="login()">ACESSAR</button>
-        </form>
+
+    <navbar>
+        <div id="navbar_img">
+            <h1>AGROTECH</h1>
+            <h3>SISTEMA DE GESTÃO DE FROTA</h3>
+        </div>
+        <div id="links">
+          <a href="../home/home.html">MODIFICAR</a>
+          <a href="../cases/cases.html">MODIFICAR</a>
+          <a href="../blog/blog.html">MODIFICAR</a>
+        </div>
+      </navbar>
+
+
+
+    <div id="loginBox">
+        <div id="loginForm">
+            <h2>ENTRE COM SEUS DADOS:</h2>
+            <input id="userInput" type="text" placeholder="USUÁRIO">
+            <input id="passwordInput" type="password" placeholder="SENHA">
+            <button id="loginBtn" onclick="login()">ENTRAR</button>
+        </div>
     </div>
+    
     <footer>
         MADE BY C.ALVARES
     </footer>
-</body>
-<script src="script.js"></script>
+  </body>
+  <script src="./login.script.js"></script>
 </html>

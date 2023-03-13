@@ -1,0 +1,46 @@
+#loginBox {
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(180deg, #ffc69b 0%, #FFFFFF 50.11%);
+}
+
+
+#loginForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    padding: 2vw;
+}
+
+
+input {
+    width: 30vw;
+    height: 4vh;
+    background: #FFFFFF;
+    border: none;
+    border-radius: 5px;
+    margin: 2vh;
+    padding: 1vw;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+#loginBtn {
+    border: none;
+    width: 15vw;
+    height: 4vh;
+    border-radius: 5px;
+    margin: 2vh;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    background: #ffc69b;
+}
+
+footer {
+    display: flex;
+    justify-content: flex-end;
+    margin: 2.5vh 2.5vw 0vh 0vw;
+}
