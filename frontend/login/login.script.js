@@ -28,9 +28,9 @@ function login() {
         .then((resp) => {
             localStorage.setItem('user', JSON.stringify(resp))
             if(resp.management != 0){
-                window.location.href = '../home/manager_home.html'
+                window.location.href = '../manager_home/manager_home.html'
             }else {
-                window.location.href = '../home/user_home.html'
+                window.location.href = '../user_home/user_home.html'
             }
         })
         .catch((err) => console.error(err));
