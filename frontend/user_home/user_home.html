@@ -23,72 +23,168 @@
 
     <section id="container">
 
-        <table id="driversTable">
-            <caption>Lista de Motoristas</caption>
-            <thead>
-                <th>ID</th>
-                <th>MOTORISTA</th>
-                <th>LICENÇA</th>
-                <th>DISPONIBILIDADE</th>
-            </thead>
-            <tbody>
-                <tr class="driverRow model">
-                    <td id="driverIdOutput"></td>
-                    <td id="nameOutput"></td>
-                    <td id="licenceOutput"></td>
-                    <td id="driverAvailabilityOutput"></td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="containTable t1">
+            <table id="driversTable">
+                <caption>Lista de Motoristas</caption>
+                <thead>
+                    <th>ID</th>
+                    <th>MOTORISTA</th>
+                    <th>LICENÇA</th>
+                    <th>DISPONIBILIDADE</th>
+                </thead>
+                <tbody>
+                    <tr class="driverRow model">
+                        <td id="driverIdOutput"></td>
+                        <td id="nameOutput"></td>
+                        <td id="licenceOutput"></td>
+                        <td id="driverAvailabilityOutput"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
-        <table id="fleetTable">
-            <caption>Lista de Veículos</caption>
-            <thead>
-                <th>ID</th>
-                <th>TIPO</th>
-                <th>PLACA</th>
-                <th>DISPONIBILIDADE</th>
-            </thead>
-            <tbody>
-                <tr class="fleetRow model">
-                    <td id="vehicleIdOutput"></td>
-                    <td id="tipoOutput"></td>
-                    <td id="plateOutput"></td>
-                    <td id="vehicleAvailabilityOutput"></td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="containTable t2">
+            <table id="fleetTable">
+                <caption>Lista de Veículos</caption>
+                <thead>
+                    <th>ID</th>
+                    <th>TIPO</th>
+                    <th>PLACA</th>
+                    <th>DISPONIBILIDADE</th>
+                </thead>
+                <tbody>
+                    <tr class="fleetRow model">
+                        <td id="vehicleIdOutput"></td>
+                        <td id="tipoOutput"></td>
+                        <td id="plateOutput"></td>
+                        <td id="vehicleAvailabilityOutput"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
-        <table id="maintenanceTable">
-            <caption>Lista de Manutenções</caption>
-            <thead>
-                <th>ID</th>
-                <th>ENTRADA</th>
-                <th>SAÍDA</th>
-                <th>DESCRIÇÃO</th>
-                <th>CUSTO</th>
-                <th>ID DO VEÍCULO</th>
-                <th>TIPO</th>
-                <th>PLACA</th>
-            </thead>
-            <tbody>
-                <tr class="maintenanceRow model">
-                    <td id="maintenanceIdOutput"></td>
-                    <td id="checkinOutput"></td>
-                    <td id="checkoutOutput"></td>
-                    <td id="descriptionOutput"></td>
-                    <td id="costOutput"></td>
-                    <td id="mainVehicleIdOutput"></td>
-                    <td id="mainVehicleTypeOutput"></td>
-                    <td id="mainVehiclePlateOutput"></td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="containTable t3">
+            <table id="maintenanceTable">
+                <caption>Lista de Manutenções</caption>
+                <thead>
+                    <th>ID</th>
+                    <th>ENTRADA</th>
+                    <th>SAÍDA</th>
+                    <th>DESCRIÇÃO</th>
+                    <th>CUSTO</th>
+                    <th>ID DO VEÍCULO</th>
+                    <th>TIPO</th>
+                    <th>PLACA</th>
+                </thead>
+                <tbody>
+                    <tr class="maintenanceRow model">
+                        <td id="maintenanceIdOutput"></td>
+                        <td id="checkinOutput"></td>
+                        <td id="checkoutOutput"></td>
+                        <td id="descriptionOutput"></td>
+                        <td id="costOutput"></td>
+                        <td id="mainVehicleIdOutput"></td>
+                        <td id="mainVehicleTypeOutput"></td>
+                        <td id="mainVehiclePlateOutput"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
+        <div class="containTable t4">
+            <table id="inCourseMaintenanceTable">
+                <caption>Lista de Manutenções</caption>
+                <thead>
+                    <th>ID</th>
+                    <th>ENTRADA</th>
+                    <th>DESCRIÇÃO</th>
+                    <th>CUSTO</th>
+                    <th>ID DO VEÍCULO</th>
+                    <th>TIPO</th>
+                    <th>PLACA</th>
+                </thead>
+                <tbody>
+                    <tr class="inCourseMaintenanceRow model">
+                        <td id="inCourseMaintenanceIdOutput"></td>
+                        <td id="inCMaincheckinOutput"></td>
+                        <td id="inCMaindescriptionOutput"></td>
+                        <td id="inCMaincostOutput"></td>
+                        <td id="inCMainVehicleIdOutput"></td>
+                        <td id="inCMainVehicleTypeOutput"></td>
+                        <td id="inCMainVehiclePlateOutput"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="containTable t5">
+            <table id="allOperationTable">
+                <caption>Lista de Operações</caption>
+                <thead>
+                    <th>ID</th>
+                    <th>PARTIDA</th>
+                    <th>CHEGADA</th>
+                    <th>DESCRIÇÃO</th>
+                    <th>ID DO MOTORISTA</th>
+                    <th>MOTORISTA</th>
+                    <th>LICENÇA</th>
+                    <th>ID DO VEÍCULO</th>
+                    <th>TIPO</th>
+                    <th>PLACA</th>
+                </thead>
+                <tbody>
+                    <tr class="allOperationRow model">
+                        <td id="operationIdOutput"></td>
+                        <td id="departureOutput"></td>
+                        <td id="arrivalOutput"></td>
+                        <td id="opDescriptionOutput"></td>
+                        <td id="opDriverIdOutput"></td>
+                        <td id="opDriverNameOutput"></td>
+                        <td id="opDriverLicenceOutput"></td>
+                        <td id="opVehicleIdOutput"></td>
+                        <td id="opVehicleTypeOutput"></td>
+                        <td id="opVehiclePlateOutput"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="containTable t6">
+            <table id="operationTable">
+                <caption>Operações em Curso</caption>
+                <thead>
+                    <th>ID</th>
+                    <th>PARTIDA</th>
+                    <th>DESCRIÇÃO</th>
+                    <th>ID DO MOTORISTA</th>
+                    <th>MOTORISTA</th>
+                    <th>LICENÇA</th>
+                    <th>ID DO VEÍCULO</th>
+                    <th>TIPO</th>
+                    <th>PLACA</th>
+                </thead>
+                <tbody>
+                    <tr class="operationRow model">
+                        <td id="operationIdOutput"></td>
+                        <td id="departureOutput"></td>
+                        <td id="opDescriptionOutput"></td>
+                        <td id="opDriverIdOutput"></td>
+                        <td id="opDriverNameOutput"></td>
+                        <td id="opDriverLicenceOutput"></td>
+                        <td id="opVehicleIdOutput"></td>
+                        <td id="opVehicleTypeOutput"></td>
+                        <td id="opVehiclePlateOutput"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </section>
     <footer>
         MADE BY C.ALVARES
+        <img src="" alt="">
     </footer>
   </body>
   <script src="./user_home.script.js"></script>
 </html>
+
+</div>

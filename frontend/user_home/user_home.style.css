@@ -1,8 +1,42 @@
-caption, th, td {
-    border: 1px solid;
+.containTable {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 5vh 0vw 5vh 0vw;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+caption {
+  margin-bottom: 2vh;
+}
+
+tr {
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  margin: 1vh;
+}
+
+thead{
+  background: #06c406;
+}
+
+th, td {
+  text-align: left;
+  padding: 1vh 1vw
 }
 
 .model {
   display: none;
   visibility: hidden;
+}
+
+
+#driverAvailabilityOutput, #vehicleAvailabilityOutput {
+  text-align: center;
+}
+
+#driverAvailabilityOutput img, #vehicleAvailabilityOutput img {
+  height: 3vh;
 }
