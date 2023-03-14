@@ -123,7 +123,7 @@ fetch('http://localhost:3000/listarfrota', optionsFleet)
       .then(resp => {
         resp.forEach(maintenanceInCourse => {
             let showMaintenanceInCourse = inCourseMaintenanceRow.cloneNode(true)
-            console.log(maintenanceInCourse)
+            // console.log(maintenanceInCourse)
             showMaintenanceInCourse.classList.remove('model')
             showMaintenanceInCourse.querySelector('#inCourseMaintenanceIdOutput').innerHTML = maintenanceInCourse.id
             showMaintenanceInCourse.querySelector('#inCMaincheckinOutput').innerHTML = maintenanceInCourse.checkin.toLocaleString('pt-BR', { timeZone: 'GMT-3' }).split('T')[0]
@@ -206,3 +206,5 @@ fetch('http://localhost:3000/listarfrota', optionsFleet)
         })
       })
       .catch(err => console.error(err));
+
+

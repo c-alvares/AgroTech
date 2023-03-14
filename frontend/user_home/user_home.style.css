@@ -11,6 +11,9 @@ table {
 
 caption {
   margin-bottom: 2vh;
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: 2rem;
 }
 
 tr {
@@ -18,11 +21,12 @@ tr {
   margin: 1vh;
 }
 
-thead{
+thead {
   background: #06c406;
 }
 
-th, td {
+th,
+td {
   text-align: left;
   padding: 1vh 1vw
 }
@@ -33,10 +37,26 @@ th, td {
 }
 
 
-#driverAvailabilityOutput, #vehicleAvailabilityOutput {
+#driverAvailabilityOutput,
+#vehicleAvailabilityOutput {
   text-align: center;
 }
 
-#driverAvailabilityOutput img, #vehicleAvailabilityOutput img {
+#driverAvailabilityOutput img,
+#vehicleAvailabilityOutput img {
   height: 3vh;
+}
+
+
+#close1,
+#close2,
+#close3,
+#close4,
+#close5,
+#close6 {
+  font-size: 2rem;
+  margin: 0vh 1vw 22vh 1vw;
+  padding: .5vw;
+  border: 1px solid;
+  border-radius: 100%;
 }
