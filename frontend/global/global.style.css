@@ -25,21 +25,37 @@ navbar {
     top: 0;
 }
 
-#navbar_img {
+#navbar_logo {
     margin-left: -10vw;
 }
 
-.nav_img {
+.nav_logo {
     height: 4vh;
     width: auto;
 }
 
-#links {
-    margin-right: -12vw;
+#span {
+    color: #06c406;
 }
 
-#links>a {
+#buttons {
+    margin-right: -12vw;
+    display: flex;
+    text-align: center;
+    gap: .25vw;
+}
+
+.buttonBox {
+    cursor: pointer;
+}
+
+.buttonBox p {
+    padding: 1vh;
+    border: none;
+    border-radius: 5px;
     font-weight: 600;
-    font-size: 0.8rem;
-    margin: 0.5vw;
+    font-size: 1rem;
+    margin: .5vw .125vw;
+    text-transform: uppercase;
+    background-color: #06c406;
 }
