@@ -13,3 +13,7 @@ Links para atribuição de ícones:
 <a href="https://www.flaticon.com/free-icons/smartphone" title="smartphone icons">Smartphone icons created by Freepik - Flaticon</a>
 
 <a href="https://www.flaticon.com/br/icones-gratis/servidor" title="servidor ícones">Servidor ícones criados por Those Icons - Flaticon</a>
+
+<a href="https://www.flaticon.com/free-icons/tick" title="tick icons">Tick icons created by Roundicons - Flaticon</a>
+
+<a href="https://www.flaticon.com/free-icons/wrong" title="wrong icons">Wrong icons created by Uniconlabs - Flaticon</a>
