@@ -1,0 +1,73 @@
+#container {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .tables {
+    display: flex;
+    flex-direction: column;
+    margin: 1vw;
+  }
+  
+  .containTable {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5vh 0vw 5vh 0vw;
+  }
+  
+  table {
+    border-collapse: collapse;
+  }
+  
+  caption {
+    margin-bottom: 2vh;
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 2rem;
+  }
+  
+  tr {
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    margin: 1vh;
+  }
+  
+  thead {
+    background: #06c406;
+  }
+  
+  th,
+  td {
+    text-align: left;
+    padding: 1vh 1vw
+  }
+  
+  .model {
+    display: none;
+    visibility: hidden;
+  }
+  
+  
+  #driverAvailabilityOutput,
+  #vehicleAvailabilityOutput {
+    text-align: center;
+  }
+  
+  #driverAvailabilityOutput img,
+  #vehicleAvailabilityOutput img {
+    height: 3vh;
+  }
+  
+  
+  #close1,
+  #close2,
+  #close3,
+  #close4,
+  #close5,
+  #close6 {
+    font-size: 2rem;
+    margin: 0vh 1vw 22vh 1vw;
+    padding: .5vw;
+    border: 1px solid;
+    border-radius: 100%;
+  }
