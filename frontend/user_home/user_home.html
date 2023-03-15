@@ -31,105 +31,109 @@
     </navbar>
 
     <section id="container">
+        <div class="tables">
+            <div class="containTable t1 model ">
+                <table id="driversTable">
+                    <caption>Motoristas</caption>
+                    <thead>
+                        <th>ID</th>
+                        <th>MOTORISTA</th>
+                        <th>LICENÇA</th>
+                        <th>DISPONIBILIDADE</th>
+                    </thead>
+                    <tbody>
+                        <tr class="driverRow model">
+                            <td id="driverIdOutput"></td>
+                            <td id="nameOutput"></td>
+                            <td id="licenceOutput"></td>
+                            <td id="driverAvailabilityOutput"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p id="close1">X</p>
+            </div>
 
-        <div class="containTable t1 model ">
-            <table id="driversTable">
-                <caption>Motoristas</caption>
-                <thead>
-                    <th>ID</th>
-                    <th>MOTORISTA</th>
-                    <th>LICENÇA</th>
-                    <th>DISPONIBILIDADE</th>
-                </thead>
-                <tbody>
-                    <tr class="driverRow model">
-                        <td id="driverIdOutput"></td>
-                        <td id="nameOutput"></td>
-                        <td id="licenceOutput"></td>
-                        <td id="driverAvailabilityOutput"></td>
-                    </tr>
-                </tbody>
-            </table>
-            <p id="close1">X</p>
+            <div class="containTable t2 model">
+                <table id="fleetTable">
+                    <caption>frota</caption>
+                    <thead>
+                        <th>ID</th>
+                        <th>TIPO</th>
+                        <th>PLACA</th>
+                        <th>DISPONIBILIDADE</th>
+                    </thead>
+                    <tbody>
+                        <tr class="fleetRow model">
+                            <td id="vehicleIdOutput"></td>
+                            <td id="tipoOutput"></td>
+                            <td id="plateOutput"></td>
+                            <td id="vehicleAvailabilityOutput"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p id="close2">X</p>
+            </div>
+        </div>
+        <div class="tables">
+            <div class="containTable t3 model">
+                <table id="maintenanceTable">
+                    <caption>Manutenções</caption>
+                    <thead>
+                        <th>ID</th>
+                        <th>ENTRADA</th>
+                        <th>SAÍDA</th>
+                        <th>DESCRIÇÃO</th>
+                        <th>CUSTO</th>
+                        <th>ID DO VEÍCULO</th>
+                        <th>TIPO</th>
+                        <th>PLACA</th>
+                    </thead>
+                    <tbody>
+                        <tr class="maintenanceRow model">
+                            <td id="maintenanceIdOutput"></td>
+                            <td id="checkinOutput"></td>
+                            <td id="checkoutOutput"></td>
+                            <td id="descriptionOutput"></td>
+                            <td id="costOutput"></td>
+                            <td id="mainVehicleIdOutput"></td>
+                            <td id="mainVehicleTypeOutput"></td>
+                            <td id="mainVehiclePlateOutput"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p id="close3">X</p>
+            </div>
+
+            <div class="containTable t4 model">
+                <table id="inCourseMaintenanceTable">
+                    <caption>Manutenções em curso</caption>
+                    <thead>
+                        <th>ID</th>
+                        <th>ENTRADA</th>
+                        <th>DESCRIÇÃO</th>
+                        <th>CUSTO</th>
+                        <th>ID DO VEÍCULO</th>
+                        <th>TIPO</th>
+                        <th>PLACA</th>
+                    </thead>
+                    <tbody>
+                        <tr class="inCourseMaintenanceRow model">
+                            <td id="inCourseMaintenanceIdOutput"></td>
+                            <td id="inCMaincheckinOutput"></td>
+                            <td id="inCMaindescriptionOutput"></td>
+                            <td id="inCMaincostOutput"></td>
+                            <td id="inCMainVehicleIdOutput"></td>
+                            <td id="inCMainVehicleTypeOutput"></td>
+                            <td id="inCMainVehiclePlateOutput"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p id="close4">X</p>
+            </div>
         </div>
 
-        <div class="containTable t2 model">
-            <table id="fleetTable">
-                <caption>frota</caption>
-                <thead>
-                    <th>ID</th>
-                    <th>TIPO</th>
-                    <th>PLACA</th>
-                    <th>DISPONIBILIDADE</th>
-                </thead>
-                <tbody>
-                    <tr class="fleetRow model">
-                        <td id="vehicleIdOutput"></td>
-                        <td id="tipoOutput"></td>
-                        <td id="plateOutput"></td>
-                        <td id="vehicleAvailabilityOutput"></td>
-                    </tr>
-                </tbody>
-            </table>
-            <p id="close2">X</p>
-        </div>
-
-        <div class="containTable t3 model">
-            <table id="maintenanceTable">
-                <caption>Manutenções</caption>
-                <thead>
-                    <th>ID</th>
-                    <th>ENTRADA</th>
-                    <th>SAÍDA</th>
-                    <th>DESCRIÇÃO</th>
-                    <th>CUSTO</th>
-                    <th>ID DO VEÍCULO</th>
-                    <th>TIPO</th>
-                    <th>PLACA</th>
-                </thead>
-                <tbody>
-                    <tr class="maintenanceRow model">
-                        <td id="maintenanceIdOutput"></td>
-                        <td id="checkinOutput"></td>
-                        <td id="checkoutOutput"></td>
-                        <td id="descriptionOutput"></td>
-                        <td id="costOutput"></td>
-                        <td id="mainVehicleIdOutput"></td>
-                        <td id="mainVehicleTypeOutput"></td>
-                        <td id="mainVehiclePlateOutput"></td>
-                    </tr>
-                </tbody>
-            </table>
-            <p id="close3">X</p>
-        </div>
-
-        <div class="containTable t4 model">
-            <table id="inCourseMaintenanceTable">
-                <caption>Manutenções em curso</caption>
-                <thead>
-                    <th>ID</th>
-                    <th>ENTRADA</th>
-                    <th>DESCRIÇÃO</th>
-                    <th>CUSTO</th>
-                    <th>ID DO VEÍCULO</th>
-                    <th>TIPO</th>
-                    <th>PLACA</th>
-                </thead>
-                <tbody>
-                    <tr class="inCourseMaintenanceRow model">
-                        <td id="inCourseMaintenanceIdOutput"></td>
-                        <td id="inCMaincheckinOutput"></td>
-                        <td id="inCMaindescriptionOutput"></td>
-                        <td id="inCMaincostOutput"></td>
-                        <td id="inCMainVehicleIdOutput"></td>
-                        <td id="inCMainVehicleTypeOutput"></td>
-                        <td id="inCMainVehiclePlateOutput"></td>
-                    </tr>
-                </tbody>
-            </table>
-            <p id="close4">X</p>
-        </div>
-
+    </section>
+    <div class="tables">
         <div class="containTable t5 model">
             <table id="allOperationTable">
                 <caption>Operações</caption>
@@ -193,7 +197,7 @@
             </table>
             <p id="close6">X</p>
         </div>
-    </section>
+    </div>
     <footer>
         MADE BY C.ALVARES
         <img src="" alt="">
