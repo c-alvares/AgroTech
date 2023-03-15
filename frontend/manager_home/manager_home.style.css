@@ -71,3 +71,8 @@
     border: 1px solid;
     border-radius: 100%;
   }
+
+  #buttons4 p{
+    background-color: black;
+    color: #06c406;
+  }
