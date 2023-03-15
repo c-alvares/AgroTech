@@ -12,7 +12,7 @@
     <navbar>
         <div id="navbar_img">
             <h1><span id="span">AGRO</span>TECH</h1>
-            <h3>SISTEMA DE GESTÃO DE FROTA</h3>
+            <h3>SISTEMA DE GESTÃO DE FROTA - <span>PAINEL DE CONTROLE</span></h3>
         </div>
         <div id="buttons">
             <div id="buttons1" class="buttonBox">
@@ -40,10 +40,17 @@
 
     <form id="user_update">
         <h3>atualizar cadastro</h3>
-        <input class="idInput" type="text" placeholder="id do usuário">
+        <input id="idInput" type="text" placeholder="id do usuário">
         <input id="updateUsernameInput" type="text" placeholder="usuário">
         <input id="updatePasswordInput" type="password" placeholder="usuário">
         <button id="updateUserBtn" onclick="updateUser()">atualizar</button>
+    </form>
+
+    <form id="level_update">
+        <h3>alterar nível hierárquico</h3>
+        <input id="idLevelInput" type="text" placeholder="id do usuário">
+        <input id="managementInput" type="text" placeholder="usuário">
+        <button id="updateLevelBtn" onclick="updateLevel()">alterar</button>
     </form>
 
     <footer>
