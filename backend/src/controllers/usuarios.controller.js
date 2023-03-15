@@ -166,13 +166,13 @@ const updateLevel = async (req, res) => {
 
 
 const remove = async (req, res) => {
-    let user = await prisma.Users.delete({
+    await prisma.Users.delete({
         where: {
             id: Number(req.params.id)
         }
     });
 
-    res.status(200).json(user).end();
+    res.status(200).end();
 }
 
 module.exports = {
