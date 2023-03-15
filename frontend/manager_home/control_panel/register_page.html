@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de Controle</title>
+    <link rel="stylesheet" href="../../global/global.style.css">
+    <link rel="stylesheet" href="../manager_home.style.css">
+</head>
+<body>
+    <navbar>
+        <div id="navbar_img">
+            <h1><span id="span">AGRO</span>TECH</h1>
+            <h3>SISTEMA DE GESTÃO DE FROTA</h3>
+        </div>
+        <div id="buttons">
+            <div id="buttons1" class="buttonBox">
+                <p>motoristas</p>
+                <p>frota</p>
+            </div>
+            <div id="buttons2" class="buttonBox">
+                <p>manutenções</p>
+                <p>operações</p>
+            </div>
+            <div id="buttons4" class="buttonBox">
+                <p>usuários</p>
+                <p>dashboard</p>
+            </div>
+        </div>
+    </navbar>
+
+    <form id="user_register">
+        <h3>cadastrar usuário</h3>
+        <input id="nameInput" type="text" placeholder="nome">
+        <input id="usernameInput" type="text" placeholder="usuário">
+        <input id="passwordInput" type="password" placeholder="senha">
+        <button id="userRegisterBtn" onclick="registerUser()">cadastrar</button>
+    </form>
+
+    <form id="user_update">
+        <h3>atualizar cadastro</h3>
+        <input class="idInput" type="text" placeholder="id do usuário">
+        <input id="updateUsernameInput" type="text" placeholder="usuário">
+        <input id="updatePasswordInput" type="password" placeholder="usuário">
+        <button id="updateUserBtn" onclick="updateUser()">atualizar</button>
+    </form>
+
+    <footer>
+        MADE BY C.ALVARES
+        <img src="" alt="">
+    </footer>
+  </body>
+  <script src="./scripts/general.script.js"></script>
+  <script src="./scripts/user.script.js"></script>
+  <script src="./scripts/user.script.js"></script>
+  <script src="./scripts/user.script.js"></script>
+  <script src="./scripts/user.script.js"></script>
+</html>
