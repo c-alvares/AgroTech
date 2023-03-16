@@ -99,32 +99,64 @@ function updateVehicle() {
 function updateVehicleAvailability() {
   window.event.preventDefault()
   
-    const options = {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: objBT.bearerToken,
-      },
-      body: `{ "availability": ${InputAutoAvailabilityUpdate.availabilityVehicleInput.value}}`,
-    };
-  
-    fetch("http://localhost:3000/alterardisponibilidadeveiculo/" + InputAutoAvailabilityUpdate.availableVehicleIdInput.value, options)
-      .then((response) => {
-        if (response.status != 200) {
-          if (response.status == 401) {
-            alert("Sessão expirada. Acesse novamente");
-            window.location.reload();
-          } else {
-            alert("Erro ao alterar disponibilidade. Tente novamente!");
-            window.location.reload();
-          }
+  const options = {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: objBT.bearerToken,
+    },
+    body: `{ "availability": ${InputAutoAvailabilityUpdate.availabilityVehicleInput.value}}`,
+  };
+
+  fetch("http://localhost:3000/alterardisponibilidadeveiculo/" + InputAutoAvailabilityUpdate.availableVehicleIdInput.value, options)
+    .then((response) => {
+      if (response.status != 200) {
+        if (response.status == 401) {
+          alert("Sessão expirada. Acesse novamente");
+          window.location.reload();
         } else {
-          return response.json();
+          alert("Erro ao alterar disponibilidade. Tente novamente!");
+          window.location.reload();
         }
-      })
-      .then((resp) => {
-        alert("Disponibilidade do veículo atualizada com sucesso!");
+      } else {
+        return response.json();
+      }
+    })
+    .then((resp) => {
+      alert("Disponibilidade do veículo atualizada com sucesso!");
+      window.location.reload();
+    })
+    .catch((err) => console.error(err));
+}
+
+
+function deleteAuto() {
+  window.event.preventDefault()
+  const options = {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: objBT.bearerToken
+    },
+  };
+  
+  fetch('http://localhost:3000/excluirveiculo/' + inputDeleteAuto.delAutoIdInput.value, options)
+  .then((response) => {
+    if (response.status != 200) {
+      if (response.status == 401) {
+        alert("Sessão expirada. Acesse novamente");
         window.location.reload();
-      })
-      .catch((err) => console.error(err));
+      } else {
+        alert("Erro ao excluir veículo. Tente novamente!");
+        window.location.reload();
+      }
+    } else {
+      return response.json();
+    }
+  })
+  .then((resp) => {
+    alert("Veículo excluído com sucesso!");
+    window.location.reload();
+  })
+  .catch((err) => console.error(err));
 }
