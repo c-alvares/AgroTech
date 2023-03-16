@@ -1,7 +1,3 @@
-const objBT = {
-  bearerToken: "Bearer " + JSON.parse(localStorage.getItem("user")).token,
-};
-
 const inputsRegister = {
   nameInput: document.querySelector("#nameInput"),
   usernameInput: document.querySelector("#usernameInput"),
