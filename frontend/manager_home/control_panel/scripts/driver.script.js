@@ -1,20 +1,20 @@
-  const driverRegister = {
-    driverInput: document.querySelector("#driverInput"),
-    licenceInput: document.querySelector("#licenceInput")
-  };
-  
-  const driverUpdate = {
-    driverIdInput: document.querySelector("#driverIdInput"),
-    driverUpInput: document.querySelector("#driverUpInput"),
-    licenceUpInput: document.querySelector("#licenceUpInput"),
-  };
-  
-  const inputAvailabilityUpdate = {
-    availableDriverIdInput: document.querySelector("#availableDriverIdInput"),
-    availabilityInput: document.querySelector("#availabilityInput"),
-  };
+const driverRegister = {
+  driverInput: document.querySelector("#driverInput"),
+  licenceInput: document.querySelector("#licenceInput")
+};
 
-  const inputDelteDriver = { delDriverIdInput: document.querySelector("#delDriverIdInput") };
+const driverUpdate = {
+  driverIdInput: document.querySelector("#driverIdInput"),
+  driverUpInput: document.querySelector("#driverUpInput"),
+  licenceUpInput: document.querySelector("#licenceUpInput"),
+};
+
+const inputAvailabilityUpdate = {
+  availableDriverIdInput: document.querySelector("#availableDriverIdInput"),
+  availabilityInput: document.querySelector("#availabilityInput"),
+};
+
+const inputDelteDriver = { delDriverIdInput: document.querySelector("#delDriverIdInput") };
 
 
 function registerDriver() {
@@ -133,6 +133,7 @@ function updateAvailability() {
 
 
 function deleteDriver() {
+  window.event.preventDefault()
   const options = {
     method: 'DELETE',
     headers: {
