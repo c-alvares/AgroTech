@@ -31,27 +31,27 @@
     </navbar>
     
     <div id="userSection">
-        <form id="user_register">
+        <form id="user_register" onsubmit="registerUser()">
             <h3>cadastrar usuário</h3>
-            <input id="nameInput" type="text" placeholder="nome">
-            <input id="usernameInput" type="text" placeholder="usuário">
-            <input id="passwordInput" type="password" placeholder="senha">
-            <button id="userRegisterBtn" onclick="registerUser()">cadastrar</button>
+            <input id="nameInput" type="text" placeholder="nome" required>
+            <input id="usernameInput" type="text" placeholder="usuário" required>
+            <input id="passwordInput" type="password" placeholder="senha" required>
+            <button id="userRegisterBtn" type="submit">cadastrar</button>
         </form>
     
-        <form id="user_update">
+        <form id="user_update" onsubmit="updateUser()">
             <h3>atualizar cadastro</h3>
-            <input id="idInput" type="text" placeholder="id do usuário">
-            <input id="updateUsernameInput" type="text" placeholder="usuário">
-            <input id="updatePasswordInput" type="password" placeholder="usuário">
-            <button id="updateUserBtn" onclick="updateUser()">atualizar</button>
+            <input id="idInput" type="text" placeholder="id do usuário" required>
+            <input id="updateUsernameInput" type="text" placeholder="usuário" required>
+            <input id="updatePasswordInput" type="password" placeholder="usuário" required>
+            <button id="updateUserBtn" type="submit">atualizar</button>
         </form>
     
-        <form id="level_update">
+        <form id="level_update" onsubmit="updateLevel()">
             <h3>alterar nível hierárquico</h3>
-            <input id="idLevelInput" type="text" placeholder="id do usuário">
-            <input id="managementInput" type="text" placeholder="usuário">
-            <button id="updateLevelBtn" onclick="updateLevel()">alterar</button>
+            <input id="idLevelInput" type="text" placeholder="id do usuário" required>
+            <input id="managementInput" type="text" placeholder="usuário" required>
+            <button id="updateLevelBtn" type="submit">alterar</button>
         </form>
     </div>
     <p class="closeInputs">X</p>
@@ -85,7 +85,7 @@
         <form id="vehicle_register">
             <h3>cadastrar veículo</h3>
             <input id="vehicleInput" type="text" placeholder="Tipo de Veículo">
-            <input id="licenceInput" type="text" placeholder="Nº da Placa">
+            <input id="plateInput" type="text" placeholder="Nº da Placa">
             <button id="vehicleRegisterBtn" onclick="registerVehicle()">cadastrar</button>
         </form>
     

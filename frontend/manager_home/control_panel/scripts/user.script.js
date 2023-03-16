@@ -20,6 +20,8 @@ const inputLevelUpdate = {
 };
 
 function registerUser() {
+  window.event.preventDefault()
+
   let send = {
     name: inputsRegister.nameInput.value,
     username: inputsRegister.usernameInput.value,
@@ -56,6 +58,8 @@ function registerUser() {
 }
 
 function updateUser() {
+  window.event.preventDefault()
+
   let send = {
     username: inputsUpdate.updateUsernameInput.value,
     password: inputsUpdate.updatePasswordInput.value,
@@ -94,9 +98,11 @@ function updateUser() {
 }
 
 function updateLevel() {
-  let send = {
-    management: inputLevelUpdate.managementInput.value,
-  };
+
+// console.log(objBT.bearerToken,  typeof`{ "management": ${inputLevelUpdate.managementInput.value}}`)
+
+// Previne o reload do formulário ao ser dado submit
+window.event.preventDefault()
 
   const options = {
     method: "PUT",
@@ -104,15 +110,14 @@ function updateLevel() {
       "Content-Type": "application/json",
       Authorization: objBT.bearerToken,
     },
+    body: `{ "management": ${inputLevelUpdate.managementInput.value}}`,
   };
-  options.body = JSON.stringify(send);
-  console.log(send)
-  console.log(options)
+
   fetch("http://localhost:3000/atualizarnivel/" + inputLevelUpdate.idLevelInput.value, options)
     .then((response) => {
       if (response.status != 200) {
-        console.log(response.status)
-        if (response.status == 404) {
+        // console.log(response.status)
+        if (response.status == 401) {
           alert("Sessão expirada. Acesse novamente");
         } else {
           console.log(response.status);
@@ -123,9 +128,10 @@ function updateLevel() {
       }
     })
     .then((resp) => {
-      console.log(resp);
+      // console.log(resp);
       alert("Nível hierárquico atualizado com sucesso!");
       window.location.reload();
     })
     .catch((err) => console.error(err));
 }
+
