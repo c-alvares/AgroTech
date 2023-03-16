@@ -55,3 +55,45 @@ function registerMaintenance() {
     })
     .catch((err) => console.error(err));
 }
+
+
+function updateMaintenance() {
+  window.event.preventDefault()
+
+  let send = {
+    description: maintainUpdate.mainDescriptionInput.value,
+    cost: Number(maintainUpdate.costInput.value)
+  };
+
+  const options = {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: objBT.bearerToken,
+    },
+  };
+  options.body = JSON.stringify(send);
+
+  fetch(
+    "http://localhost:3000/atualizartipomanutencao/" + maintainUpdate.maintIDInput.value,
+    options
+  )
+    .then((response) => {
+      if (response.status != 200) {
+        if (response.status == 401) {
+          alert("Sessão expirada. Acesse novamente");
+          window.location.reload();
+        } else {
+          alert("Erro ao atualizar manutenção. Tente novamente!");
+          window.location.reload();
+        }
+      } else {
+        return response.json();
+      }
+    })
+    .then((resp) => {
+      alert("Manutenção atualizado com sucesso!");
+      window.location.reload();
+    })
+    .catch((err) => console.error(err));
+}
