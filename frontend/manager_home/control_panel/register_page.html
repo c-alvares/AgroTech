@@ -11,7 +11,7 @@
 <body>
     <navbar>
         <div id="navbar_img">
-            <h1><span id="span">AGRO</span>TECH</h1>
+            <h1><a href="../manager_home.html"><span id="span">AGRO</span>TECH</a></h1>
             <h3>SISTEMA DE GESTÃO DE FROTA - <span>PAINEL DE CONTROLE</span></h3>
         </div>
         <div id="buttons">
@@ -29,29 +29,82 @@
             </div>
         </div>
     </navbar>
+    
+    <div id="userSection">
+        <form id="user_register">
+            <h3>cadastrar usuário</h3>
+            <input id="nameInput" type="text" placeholder="nome">
+            <input id="usernameInput" type="text" placeholder="usuário">
+            <input id="passwordInput" type="password" placeholder="senha">
+            <button id="userRegisterBtn" onclick="registerUser()">cadastrar</button>
+        </form>
+    
+        <form id="user_update">
+            <h3>atualizar cadastro</h3>
+            <input id="idInput" type="text" placeholder="id do usuário">
+            <input id="updateUsernameInput" type="text" placeholder="usuário">
+            <input id="updatePasswordInput" type="password" placeholder="usuário">
+            <button id="updateUserBtn" onclick="updateUser()">atualizar</button>
+        </form>
+    
+        <form id="level_update">
+            <h3>alterar nível hierárquico</h3>
+            <input id="idLevelInput" type="text" placeholder="id do usuário">
+            <input id="managementInput" type="text" placeholder="usuário">
+            <button id="updateLevelBtn" onclick="updateLevel()">alterar</button>
+        </form>
+    </div>
+    <p class="closeInputs">X</p>
 
-    <form id="user_register">
-        <h3>cadastrar usuário</h3>
-        <input id="nameInput" type="text" placeholder="nome">
-        <input id="usernameInput" type="text" placeholder="usuário">
-        <input id="passwordInput" type="password" placeholder="senha">
-        <button id="userRegisterBtn" onclick="registerUser()">cadastrar</button>
-    </form>
+    <div id="driverSection">
+        <form id="driver_register">
+            <h3>cadastrar motorista</h3>
+            <input id="driverInput" type="text" placeholder="motorista">
+            <input id="licenceInput" type="text" placeholder="Nº da Licença">
+            <button id="driverRegisterBtn" onclick="registerDriver()">cadastrar</button>
+        </form>
+    
+        <form id="driver_update">
+            <h3>atualizar dados do motorista</h3>
+            <input id="driverIdInput" type="text" placeholder="id do motorista">
+            <input id="driverUpInput" type="text" placeholder="motorista">
+            <input id="licenceUpInput" type="text" placeholder="Nº da Licença">
+            <button id="updateDriverBtn" onclick="updateDriver()">atualizar</button>
+        </form>
+    
+        <form id="availability_update">
+            <h3>alterar disponibilidade motorista</h3>
+            <input id="availableDriverIdInput" type="text" placeholder="id do motorista">
+            <input id="availabilityInput" type="text" placeholder="Disponibilidade">
+            <button id="updateAvailabilityBtn" onclick="updateAvailability()">alterar</button>
+        </form>
+    </div>
+    <p class="closeInputs">X</p>
 
-    <form id="user_update">
-        <h3>atualizar cadastro</h3>
-        <input id="idInput" type="text" placeholder="id do usuário">
-        <input id="updateUsernameInput" type="text" placeholder="usuário">
-        <input id="updatePasswordInput" type="password" placeholder="usuário">
-        <button id="updateUserBtn" onclick="updateUser()">atualizar</button>
-    </form>
+    <div id="fleetSection">
+        <form id="vehicle_register">
+            <h3>cadastrar veículo</h3>
+            <input id="vehicleInput" type="text" placeholder="Tipo de Veículo">
+            <input id="licenceInput" type="text" placeholder="Nº da Placa">
+            <button id="vehicleRegisterBtn" onclick="registerVehicle()">cadastrar</button>
+        </form>
+    
+        <form id="vehicle_update">
+            <h3>atualizar dados do veículo</h3>
+            <input id="vehicleIdInput" type="text" placeholder="ID do Veículo">
+            <input id="typeUpInput" type="text" placeholder="Tipo de Veículo">
+            <button id="updateVehicleBtn" onclick="updateVehicle()">atualizar</button>
+        </form>
+    
+        <form id="vehicleAvailability_update">
+            <h3>alterar disponibilidade veículo</h3>
+            <input id="availableVehicleIdInput" type="text" placeholder="ID do Veículo">
+            <input id="availabilityVehicleInput" type="text" placeholder="Disponibilidade">
+            <button id="updateVehicleAvailabilityBtn" onclick="updateVehicleAvailability()">alterar</button>
+        </form>
+    </div>
+    <p class="closeInputs">X</p>
 
-    <form id="level_update">
-        <h3>alterar nível hierárquico</h3>
-        <input id="idLevelInput" type="text" placeholder="id do usuário">
-        <input id="managementInput" type="text" placeholder="usuário">
-        <button id="updateLevelBtn" onclick="updateLevel()">alterar</button>
-    </form>
 
     <footer>
         MADE BY C.ALVARES
@@ -59,8 +112,5 @@
     </footer>
   </body>
   <script src="./scripts/general.script.js"></script>
-  <script src="./scripts/user.script.js"></script>
-  <script src="./scripts/user.script.js"></script>
-  <script src="./scripts/user.script.js"></script>
   <script src="./scripts/user.script.js"></script>
 </html>
