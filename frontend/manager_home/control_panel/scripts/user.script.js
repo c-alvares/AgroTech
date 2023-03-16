@@ -38,9 +38,11 @@ function registerUser() {
       if (response.status != 201) {
         if (response.status == 401) {
           alert("Sessão expirada. Acesse novamente");
+          window.location.reload();
         } else {
-          console.log(response.status);
+          // console.log(response.status);
           alert("Erro ao cadastrar usuário. Tente novamente!");
+          window.location.reload();
         }
       } else {
         return response.json();
@@ -78,9 +80,10 @@ function updateUser() {
       if (response.status != 200) {
         if (response.status == 401) {
           alert("Sessão expirada. Acesse novamente");
+          window.location.reload();
         } else {
-          console.log(response.status);
           alert("Erro ao atualizar dados. Tente novamente!");
+          window.location.reload();
         }
       } else {
         return response.json();
@@ -115,9 +118,11 @@ window.event.preventDefault()
         // console.log(response.status)
         if (response.status == 401) {
           alert("Sessão expirada. Acesse novamente");
+          window.location.reload();
         } else {
-          console.log(response.status);
+          // console.log(response.status);
           alert("Erro ao alterar nível hierárquico. Tente novamente!");
+          window.location.reload();
         }
       } else {
         return response.json();
