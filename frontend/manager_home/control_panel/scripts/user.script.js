@@ -36,7 +36,7 @@ function registerUser() {
   fetch("http://localhost:3000/cadastrarusuario", options)
     .then((response) => {
       if (response.status != 201) {
-        if (response.status == 404) {
+        if (response.status == 401) {
           alert("Sessão expirada. Acesse novamente");
         } else {
           console.log(response.status);
@@ -76,7 +76,7 @@ function updateUser() {
   )
     .then((response) => {
       if (response.status != 200) {
-        if (response.status == 404) {
+        if (response.status == 401) {
           alert("Sessão expirada. Acesse novamente");
         } else {
           console.log(response.status);
@@ -130,4 +130,3 @@ window.event.preventDefault()
     })
     .catch((err) => console.error(err));
 }
-
