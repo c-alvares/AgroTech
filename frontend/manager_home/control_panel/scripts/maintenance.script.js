@@ -2,20 +2,23 @@ const maintainRegister = {
     maintenanceDescriptionInput: document.querySelector("#maintenanceDescriptionInput"),
     priceInput: document.querySelector("#priceInput"),
     automobileIDInput: document.querySelector("#automobileIDInput"),
-  };
+};
   
 const maintainUpdate = {
     maintIDInput: document.querySelector("#maintIDInput"),
     mainDescriptionInput: document.querySelector("#mainDescriptionInput"),
     costInput: document.querySelector("#costInput"),
-  };
+};
   
 const InputFinishMaintain = {
     MaintainIDInput: document.querySelector("#MaintainIDInput"),
     autoIDInput: document.querySelector("#autoIDInput"),
-  };
+};
   
-const inputDeleteMaintain = { delMaintainIdInput: document.querySelector("#delMaintainIdInput") };
+const inputDeleteMaintain = { 
+  delMaintainIdInput: document.querySelector("#delMaintainIdInput"),
+  autoIDDelInput: document.querySelector("#autoIDDelInput"),
+};
 
 
 function registerMaintenance() {
@@ -110,9 +113,8 @@ function finishMaintenance() {
     },
   };
 
-  fetch("http://localhost:3000/finalizarmanutencao/" + (InputFinishMaintain.MaintainIDInput.value + "/" ) + InputFinishMaintain.autoIDInput.value, options)
+  fetch("http://localhost:3000/finalizarmanutencao/" + (InputFinishMaintain.MaintainIDInput.value + '/' ) + InputFinishMaintain.autoIDInput.value, options)
     .then((response) => {
-      console.log("http://localhost:3000/finalizarmanutencao/" + (InputFinishMaintain.MaintainIDInput.value + "/" ) + InputFinishMaintain.autoIDInput.value)
       if (response.status != 200) {
         if (response.status == 401) {
           alert("Sessão expirada. Acesse novamente");
@@ -130,4 +132,36 @@ function finishMaintenance() {
       window.location.reload();
     })
     .catch((err) => console.error(err));
+}
+
+
+function deleteMaintenance() {
+  window.event.preventDefault()
+  const options = {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: objBT.bearerToken
+    },
+  };
+  
+  fetch('http://localhost:3000/excluirmanutencao/' + (inputDeleteMaintain.delMaintainIdInput.value + '/') + inputDeleteMaintain.autoIDDelInput.value, options)
+  .then((response) => {
+    if (response.status != 200) {
+      if (response.status == 401) {
+        alert("Sessão expirada. Acesse novamente");
+        window.location.reload();
+      } else {
+        alert("Erro ao excluir manutenção. Tente novamente!");
+        window.location.reload();
+      }
+    } else {
+      return response.json();
+    }
+  })
+  .then((resp) => {
+    alert("Manutenção excluída com sucesso!");
+    window.location.reload();
+  })
+  .catch((err) => console.error(err));
 }
