@@ -89,7 +89,7 @@
     </div>
 
     
-    <div id="fleetSection">
+    <div id="fleetSection" class="model">
         <form id="vehicle_register" onsubmit="registerVehicle()">
             <h3>cadastrar veículo</h3>
             <input id="vehicleInput" type="text" placeholder="Tipo de Veículo" required>
@@ -119,6 +119,38 @@
         <p class="closeInputs">X</p>
     </div>
 
+
+    <div id="maintainSection" class="">
+        <form id="maintain_register" onsubmit="registerVehicle()">
+            <h3>cadastrar manutenção</h3>
+            <input id="maintenanceDescriptionInput" type="text" placeholder="Descrição" required>
+            <input id="priceInput" type="text" placeholder="Preço" required>
+            <input id="automobileIDInput" type="text" placeholder="ID do Veículo" required>
+            <button id="maintainRegisterBtn" type="submit">cadastrar</button>
+        </form>
+    
+        <form id="maintain_update" onsubmit="updateMaintenance()">
+            <h3>atualizar tipo de manutenção</h3>
+            <input id="maintIDInput" type="text" placeholder="ID do Manutenção" required>
+            <input id="mainDescriptionInput" type="text" placeholder="Descrição" required>
+            <input id="costInput" type="text" placeholder="Preço" required>
+            <button id="updateMaintBtn" type="submit">atualizar</button>
+        </form>
+    
+        <form id="finishMaintain" onsubmit="finishMaintenance()">
+            <h3>finalizar manutenção</h3>
+            <input id="MaintainIDInput" type="text" placeholder="ID da Manutenção" required>
+            <input id="autoIDInput" type="text" placeholder="ID da Veículo" required>
+            <button id="finishMainBtn" type="submit">finalizar</button>
+        </form>
+
+        <form id="deleteMaintain" onsubmit="deleteAuto()">
+            <h3>excluir manutenção</h3>
+            <input id="delMaintainIdInput" type="text" placeholder="id da manutenção" required>
+            <button id="deleteMaintainBtn" type="submit">excluir</button>
+        </form>
+        <p class="closeInputs">X</p>
+    </div>
 
     <footer>
         MADE BY C.ALVARES
