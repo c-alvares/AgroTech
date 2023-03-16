@@ -57,26 +57,26 @@
     <p class="closeInputs">X</p>
 
     <div id="driverSection">
-        <form id="driver_register">
+        <form id="driver_register" onsubmit="registerDriver()">
             <h3>cadastrar motorista</h3>
-            <input id="driverInput" type="text" placeholder="motorista">
-            <input id="licenceInput" type="text" placeholder="Nº da Licença">
-            <button id="driverRegisterBtn" onclick="registerDriver()">cadastrar</button>
+            <input id="driverInput" type="text" placeholder="motorista" required>
+            <input id="licenceInput" type="text" placeholder="Nº da Licença" pattern="[0-9]{7}" required>
+            <button id="driverRegisterBtn" type="submit">cadastrar</button>
         </form>
     
-        <form id="driver_update">
+        <form id="driver_update" onsubmit="updateDriver()">
             <h3>atualizar dados do motorista</h3>
-            <input id="driverIdInput" type="text" placeholder="id do motorista">
-            <input id="driverUpInput" type="text" placeholder="motorista">
-            <input id="licenceUpInput" type="text" placeholder="Nº da Licença">
-            <button id="updateDriverBtn" onclick="updateDriver()">atualizar</button>
+            <input id="driverIdInput" type="text" placeholder="id do motorista" required>
+            <input id="driverUpInput" type="text" placeholder="motorista" required>
+            <input id="licenceUpInput" type="text" placeholder="Nº da Licença" pattern="[0-9]{7}" required>
+            <button id="updateDriverBtn" type="submit">atualizar</button>
         </form>
     
-        <form id="availability_update">
+        <form id="availability_update" onsubmit="updateAvailability()">
             <h3>alterar disponibilidade motorista</h3>
-            <input id="availableDriverIdInput" type="text" placeholder="id do motorista">
-            <input id="availabilityInput" type="text" placeholder="Disponibilidade">
-            <button id="updateAvailabilityBtn" onclick="updateAvailability()">alterar</button>
+            <input id="availableDriverIdInput" type="text" placeholder="id do motorista" required>
+            <input id="availabilityInput" type="text" placeholder="Disponibilidade"required>
+            <button id="updateAvailabilityBtn" type="submit">alterar</button>
         </form>
     </div>
     <p class="closeInputs">X</p>
@@ -113,4 +113,6 @@
   </body>
   <script src="./scripts/general.script.js"></script>
   <script src="./scripts/user.script.js"></script>
+  <script src="./scripts/driver.script.js"></script>
+  <!-- <script src="./scripts/fleet.script.js"></script> -->
 </html>
