@@ -97,3 +97,37 @@ function updateMaintenance() {
     })
     .catch((err) => console.error(err));
 }
+
+
+function finishMaintenance() {
+  window.event.preventDefault()
+  
+  const options = {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: objBT.bearerToken,
+    },
+  };
+
+  fetch("http://localhost:3000/finalizarmanutencao/" + (InputFinishMaintain.MaintainIDInput.value + "/" ) + InputFinishMaintain.autoIDInput.value, options)
+    .then((response) => {
+      console.log("http://localhost:3000/finalizarmanutencao/" + (InputFinishMaintain.MaintainIDInput.value + "/" ) + InputFinishMaintain.autoIDInput.value)
+      if (response.status != 200) {
+        if (response.status == 401) {
+          alert("Sessão expirada. Acesse novamente");
+          window.location.reload();
+        } else {
+          alert("Erro ao finalizar manutenção. Tente novamente!");
+          window.location.reload();
+        }
+      } else {
+        return response.json();
+      }
+    })
+    .then((resp) => {
+      alert("Manutenção finalizada com sucesso!");
+      window.location.reload();
+    })
+    .catch((err) => console.error(err));
+}
