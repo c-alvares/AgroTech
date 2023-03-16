@@ -7,6 +7,7 @@ const inputsRegister = {
   usernameInput: document.querySelector("#usernameInput"),
   passwordInput: document.querySelector("#passwordInput"),
 };
+
 const inputsUpdate = {
   idInput: document.querySelector("#idInput"),
   updateUsernameInput: document.querySelector("#updateUsernameInput"),
@@ -94,7 +95,7 @@ function updateUser() {
 
 function updateLevel() {
   let send = {
-    management: inputLevelUpdate.managementInput,
+    management: inputLevelUpdate.managementInput.value,
   };
 
   const options = {
@@ -105,13 +106,12 @@ function updateLevel() {
     },
   };
   options.body = JSON.stringify(send);
-console.log(options.body)
-  fetch(
-    "http://localhost:3000/atualizarnivel/" + inputLevelUpdate.idLevelInput.value,
-    options
-  )
+  console.log(send)
+  console.log(options)
+  fetch("http://localhost:3000/atualizarnivel/" + inputLevelUpdate.idLevelInput.value, options)
     .then((response) => {
       if (response.status != 200) {
+        console.log(response.status)
         if (response.status == 404) {
           alert("Sessão expirada. Acesse novamente");
         } else {
@@ -125,7 +125,7 @@ console.log(options.body)
     .then((resp) => {
       console.log(resp);
       alert("Nível hierárquico atualizado com sucesso!");
-      // window.location.reload();
+      window.location.reload();
     })
     .catch((err) => console.error(err));
 }
