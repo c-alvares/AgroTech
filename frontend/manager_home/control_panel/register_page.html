@@ -78,9 +78,17 @@
             <input id="availabilityInput" type="text" placeholder="Disponibilidade"required>
             <button id="updateAvailabilityBtn" type="submit">alterar</button>
         </form>
+
+        <form id="delete_driver" onsubmit="deleteDriver()">
+            <h3>excluir motorista</h3>
+            <input id="delDriverIdInput" type="text" placeholder="id do motorista" required>
+            <button id="deleteDriverBtn" type="submit">excluir</button>
+        </form>
     </div>
     <p class="closeInputs">X</p>
 
+
+    
     <div id="fleetSection">
         <form id="vehicle_register">
             <h3>cadastrar veículo</h3>
