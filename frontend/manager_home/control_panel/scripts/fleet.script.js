@@ -8,7 +8,7 @@ const vehicleUpdate = {
   typeUpInput: document.querySelector("#typeUpInput"),
 };
 
-const InputAvailabilityUpdate = {
+const InputAutoAvailabilityUpdate = {
   availableVehicleIdInput: document.querySelector("#availableVehicleIdInput"),
   availabilityVehicleInput: document.querySelector("#availabilityVehicleInput"),
 };
@@ -54,6 +54,7 @@ function registerVehicle() {
     .catch((err) => console.error(err));
 }
 
+
 function updateVehicle() {
   window.event.preventDefault()
 
@@ -92,4 +93,38 @@ function updateVehicle() {
       window.location.reload();
     })
     .catch((err) => console.error(err));
+}
+
+
+function updateVehicleAvailability() {
+  window.event.preventDefault()
+  
+    const options = {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: objBT.bearerToken,
+      },
+      body: `{ "availability": ${InputAutoAvailabilityUpdate.availabilityVehicleInput.value}}`,
+    };
+  
+    fetch("http://localhost:3000/alterardisponibilidadeveiculo/" + InputAutoAvailabilityUpdate.availableVehicleIdInput.value, options)
+      .then((response) => {
+        if (response.status != 200) {
+          if (response.status == 401) {
+            alert("Sessão expirada. Acesse novamente");
+            window.location.reload();
+          } else {
+            alert("Erro ao alterar disponibilidade. Tente novamente!");
+            window.location.reload();
+          }
+        } else {
+          return response.json();
+        }
+      })
+      .then((resp) => {
+        alert("Disponibilidade do veículo atualizada com sucesso!");
+        window.location.reload();
+      })
+      .catch((err) => console.error(err));
 }
