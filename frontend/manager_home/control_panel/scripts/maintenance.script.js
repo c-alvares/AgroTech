@@ -23,10 +23,9 @@ function registerMaintenance() {
 
   let send = {
     description: maintainRegister.maintenanceDescriptionInput.value,
-    cost: maintainRegister.priceInput.value,
-    vehicle_id: maintainRegister.automobileIDInput.value,
+    cost: Number(maintainRegister.priceInput.value),
+    vehicle_id: Number(maintainRegister.automobileIDInput.value),
   };
-console.log(send)
   const options = {
     method: "POST",
     headers: {
