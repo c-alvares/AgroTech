@@ -154,7 +154,7 @@
     </div>
 
     <div id="operationSection" class="">
-        <form id="operation_register" onsubmit="registerOperation()">
+        <form id="registerOperation" onsubmit="registerOperation()">
             <h3>cadastrar operação</h3>
             <input id="opDescriptionInput" type="text" placeholder="Descrição" required>
             <input id="opDriverIDInput" type="text" placeholder="ID do Motorista" required>
@@ -162,14 +162,14 @@
             <button id="opRegisterBtn" type="submit">cadastrar</button>
         </form>
     
-        <form id="maintain_update" onsubmit="updateOperation()">
+        <form id="updateOperation" onsubmit="updateOperation()">
             <h3>atualizar descrição da operação</h3>
             <input id="operationIDInput" type="text" placeholder="ID da Operação" required>
             <input id="operationDescriptionInput" type="text" placeholder="Descrição" required>
             <button id="operationOpdateBtn" type="submit">atualizar</button>
         </form>
     
-        <form id="finishMaintain" onsubmit="finishOperation()">
+        <form id="finishOperation" onsubmit="finishOperation()">
             <h3>finalizar operação</h3>
             <input id="finishOperationIdInput" type="text" placeholder="id da Operação" required>
             <input id="operationDriverIDEndInput" type="text" placeholder="ID do Motorista" required>
@@ -177,7 +177,7 @@
             <button id="finishOperationBtn" type="submit">finalizar</button>
         </form>
 
-        <form id="deleteMaintain" onsubmit="deleteOperation()">
+        <form id="deleteOperation" onsubmit="deleteOperation()">
             <h3>excluir operação</h3>
             <input id="delOperationIdInput" type="text" placeholder="id da Operação" required>
             <input id="operationDriverIDDelInput" type="text" placeholder="ID do Motorista" required>
