@@ -100,3 +100,35 @@ function updateOperation() {
       .catch((err) => console.error(err));
 }
 
+function finishOperation() {
+    window.event.preventDefault()
+  
+    const options = {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: objBT.bearerToken,
+      },
+    };
+  
+    fetch("http://localhost:3000/finalizaroperacao/" + (finishOperationObj.finishOperationIdInput.value + '/' ) + (finishOperationObj.operationDriverIDEndInput.value + '/') + finishOperationObj.operationVehicleIDEndInput.value, options)
+      .then((response) => {
+        if (response.status != 200) {
+          if (response.status == 401) {
+            alert("Sessão expirada. Acesse novamente");
+            window.location.reload();
+          } else {
+            alert("Erro ao finalizar operação. Tente novamente!");
+            window.location.reload();
+          }
+        } else {
+          return response.json();
+        }
+      })
+      .then((resp) => {
+        alert("Operação finalizada com sucesso!");
+        window.location.reload();
+      })
+      .catch((err) => console.error(err));
+}
+
