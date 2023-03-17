@@ -59,3 +59,44 @@ function registerOperation() {
       })
       .catch((err) => console.error(err));
 }
+
+function updateOperation() {
+    window.event.preventDefault()
+
+    let send = {
+      description: updateOperationObj.operationDescriptionInput.value,
+    };
+  
+    const options = {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: objBT.bearerToken,
+      },
+    };
+    options.body = JSON.stringify(send);
+  
+    fetch(
+      "http://localhost:3000/atualizartdescricaoperacao/" + updateOperationObj.operationIDInput.value,
+      options
+    )
+      .then((response) => {
+        if (response.status != 200) {
+          if (response.status == 401) {
+            alert("Sessão expirada. Acesse novamente");
+            window.location.reload();
+          } else {
+            alert("Erro ao atualizar operação. Tente novamente!");
+            window.location.reload();
+          }
+        } else {
+          return response.json();
+        }
+      })
+      .then((resp) => {
+        alert("Operação atualizado com sucesso!");
+        window.location.reload();
+      })
+      .catch((err) => console.error(err));
+}
+
