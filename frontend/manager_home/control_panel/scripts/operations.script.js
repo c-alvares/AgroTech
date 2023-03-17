@@ -132,3 +132,33 @@ function finishOperation() {
       .catch((err) => console.error(err));
 }
 
+function deleteOperation() {
+    window.event.preventDefault()
+    const options = {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: objBT.bearerToken
+      },
+    };
+    
+    fetch('http://localhost:3000/excluiroperacao/' + (deleteOperationObj.delOperationIdInput.value + '/') + (deleteOperationObj.operationDriverIDDelInput.value + '/') + deleteOperationObj.operationVehicleIDDelInput.value, options)
+    .then((response) => {
+      if (response.status != 200) {
+        if (response.status == 401) {
+          alert("Sessão expirada. Acesse novamente");
+          window.location.reload();
+        } else {
+          alert("Erro ao excluir operação. Tente novamente!");
+          window.location.reload();
+        }
+      } else {
+        return response.json();
+      }
+    })
+    .then((resp) => {
+      alert("Operação excluída com sucesso!");
+      window.location.reload();
+    })
+    .catch((err) => console.error(err));
+}
