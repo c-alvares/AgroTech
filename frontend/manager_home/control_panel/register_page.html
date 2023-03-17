@@ -12,7 +12,7 @@
     <navbar>
         <div id="navbar_img">
             <h1><a href="../manager_home.html"><span id="span">AGRO</span>TECH</a></h1>
-            <h3>SISTEMA DE GESTÃO DE FROTA - <span>PAINEL DE CONTROLE</span></h3>
+            <h3>SISTEMA DE GESTÃO DE FROTA - <span id="controlPanel">PAINEL DE CONTROLE</span></h3>
         </div>
         <div id="buttons">
             <div id="buttons1" class="buttonBox">
@@ -23,14 +23,14 @@
                 <p>manutenções</p>
                 <p>operações</p>
             </div>
-            <div id="buttons4" class="buttonBox">
+            <div id="buttons3" class="buttonBox buttons3">
                 <p>usuários</p>
                 <p>dashboard</p>
             </div>
         </div>
     </navbar>
     
-    <div id="userSection" class="model">
+    <div id="userSection" class="f1 model">
         <form id="user_register" onsubmit="registerUser()">
             <h3>cadastrar usuário</h3>
             <input id="nameInput" type="text" placeholder="nome" required>
@@ -53,11 +53,11 @@
             <input id="managementInput" type="text" placeholder="usuário" required>
             <button id="updateLevelBtn" type="submit">alterar</button>
         </form>
-        <p class="closeInputs">X</p>
+        <p class="closeInputs" id="close1">X</p>
     </div>
 
 
-    <div id="driverSection" class="model">
+    <div id="driverSection" class="f2 model">
         <form id="driver_register" onsubmit="registerDriver()">
             <h3>cadastrar motorista</h3>
             <input id="driverInput" type="text" placeholder="motorista" required>
@@ -85,11 +85,11 @@
             <input id="delDriverIdInput" type="text" placeholder="id do motorista" required>
             <button id="deleteDriverBtn" type="submit">excluir</button>
         </form>
-        <p class="closeInputs">X</p>
+        <p class="closeInputs" id="close2">X</p>
     </div>
 
     
-    <div id="fleetSection" class="model">
+    <div id="fleetSection" class="f3 model">
         <form id="vehicle_register" onsubmit="registerVehicle()">
             <h3>cadastrar veículo</h3>
             <input id="vehicleInput" type="text" placeholder="Tipo de Veículo" required>
@@ -116,11 +116,11 @@
             <input id="delAutoIdInput" type="text" placeholder="id do veículo" required>
             <button id="deleteAutoBtn" type="submit">excluir</button>
         </form>
-        <p class="closeInputs">X</p>
+        <p class="closeInputs" id="close3">X</p>
     </div>
 
 
-    <div id="maintainSection" class="model">
+    <div id="maintainSection" class="f4 model">
         <form id="maintain_register" onsubmit="registerMaintenance()">
             <h3>cadastrar manutenção</h3>
             <input id="maintenanceDescriptionInput" type="text" placeholder="Descrição" required>
@@ -150,10 +150,10 @@
             <input id="autoIDDelInput" type="text" placeholder="ID do Veículo" required>
             <button id="deleteMaintainBtn" type="submit">excluir</button>
         </form>
-        <p class="closeInputs">X</p>
+        <p class="closeInputs" id="close4">X</p>
     </div>
 
-    <div id="operationSection" class="">
+    <div id="operationSection" class="f5 model">
         <form id="registerOperation" onsubmit="registerOperation()">
             <h3>cadastrar operação</h3>
             <input id="opDescriptionInput" type="text" placeholder="Descrição" required>
@@ -184,7 +184,7 @@
             <input id="operationVehicleIDDelInput" type="text" placeholder="ID do Veículo" required>
             <button id="deleteOperationBtn" type="submit">excluir</button>
         </form>
-        <p class="closeInputs">X</p>
+        <p class="closeInputs" id="close5">X</p>
     </div>
 
     <footer>
