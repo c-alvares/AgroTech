@@ -16,7 +16,6 @@ export default function LoginScreen({ navigation }) {
         await AsyncStorage.setItem('data', data);
 
     }
-    // saveData(.id_entregador)
  
     const logIn = () => {
         // console.log(username, password)
@@ -34,7 +33,7 @@ export default function LoginScreen({ navigation }) {
             .then((resp) => {
                 if (resp === 200) {
                     // console.log("Acesso liberado");
-                    navigation.navigate('Home')
+                    navigation.navigate('Index')
                 } else {
                     // console.log(resp.status)
                 }
@@ -58,12 +57,7 @@ export default function LoginScreen({ navigation }) {
                 placeholderTextColor="#CCC">
             </TextInput>
 
-            <StatusBar style="auto" />
-
-            <Button
-                title="Acessar"
-                onPress={() => { logIn() }}
-            />
+            <Button title="Acessar" onPress={() => { logIn() }} />
         </View>
     )
 }
