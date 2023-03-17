@@ -16,6 +16,6 @@ router.get('/buscaroperacao/:id', Operation.readOne);
 router.get('/buscaroperacoesemcurso/', Operation.readOngoing);
 router.put('/atualizartdescricaoperacao/:id', Operation.update);
 router.put('/finalizaroperacao/:id/:driver_id/:vehicle_id', Operation.updateStatus);
-router.delete('/excluiroperacao/:id/:vehicle_id', Operation.remove);
+router.delete('/excluiroperacao/:id/:driver_id/:vehicle_id', Operation.remove);
 
 module.exports = router;
