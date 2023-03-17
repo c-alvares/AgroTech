@@ -154,34 +154,35 @@
     </div>
 
     <div id="operationSection" class="">
-        <form id="maintain_register" onsubmit="registerMaintenance()">
-            <h3>cadastrar manutenção</h3>
-            <input id="maintenanceDescriptionInput" type="text" placeholder="Descrição" required>
-            <input id="priceInput" type="text" placeholder="Preço" required>
-            <input id="automobileIDInput" type="text" placeholder="ID do Veículo" required>
-            <button id="maintainRegisterBtn" type="submit">cadastrar</button>
+        <form id="operation_register" onsubmit="registerOperation()">
+            <h3>cadastrar operação</h3>
+            <input id="opDescriptionInput" type="text" placeholder="Descrição" required>
+            <input id="opDriverIDInput" type="text" placeholder="ID do Motorista" required>
+            <input id="opAutomobileIDInput" type="text" placeholder="ID do Veículo" required>
+            <button id="opRegisterBtn" type="submit">cadastrar</button>
         </form>
     
-        <form id="maintain_update" onsubmit="updateMaintenance()">
-            <h3>atualizar tipo de manutenção</h3>
-            <input id="maintIDInput" type="text" placeholder="ID do Manutenção" required>
-            <input id="mainDescriptionInput" type="text" placeholder="Descrição" required>
-            <input id="costInput" type="text" placeholder="Preço" required>
-            <button id="updateMaintBtn" type="submit">atualizar</button>
+        <form id="maintain_update" onsubmit="updateOperation()">
+            <h3>atualizar descrição da operação</h3>
+            <input id="operationIDInput" type="text" placeholder="ID da Operação" required>
+            <input id="operationDescriptionInput" type="text" placeholder="Descrição" required>
+            <button id="operationOpdateBtn" type="submit">atualizar</button>
         </form>
     
-        <form id="finishMaintain" onsubmit="finishMaintenance()">
-            <h3>finalizar manutenção</h3>
-            <input id="MaintainIDInput" type="text" placeholder="ID da Manutenção" required>
-            <input id="autoIDInput" type="text" placeholder="ID do Veículo" required>
-            <button id="finishMainBtn" type="submit">finalizar</button>
+        <form id="finishMaintain" onsubmit="finishOperation()">
+            <h3>finalizar operação</h3>
+            <input id="finishOperationIdInput" type="text" placeholder="id da Operação" required>
+            <input id="operationDriverIDEndInput" type="text" placeholder="ID do Motorista" required>
+            <input id="operationVehicleIDEndInput" type="text" placeholder="ID do Veículo" required>
+            <button id="finishOperationBtn" type="submit">finalizar</button>
         </form>
 
-        <form id="deleteMaintain" onsubmit="deleteMaintenance()">
-            <h3>excluir manutenção</h3>
-            <input id="delMaintainIdInput" type="text" placeholder="id da manutenção" required>
-            <input id="autoIDDelInput" type="text" placeholder="ID do Veículo" required>
-            <button id="deleteMaintainBtn" type="submit">excluir</button>
+        <form id="deleteMaintain" onsubmit="deleteOperation()">
+            <h3>excluir operação</h3>
+            <input id="delOperationIdInput" type="text" placeholder="id da Operação" required>
+            <input id="operationDriverIDDelInput" type="text" placeholder="ID do Motorista" required>
+            <input id="operationVehicleIDDelInput" type="text" placeholder="ID do Veículo" required>
+            <button id="deleteOperationBtn" type="submit">excluir</button>
         </form>
         <p class="closeInputs">X</p>
     </div>
