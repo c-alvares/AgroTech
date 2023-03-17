@@ -23,17 +23,39 @@ const deleteOperationObj = {
 };
 
 function registerOperation() {
+    window.event.preventDefault()
 
-}
-
-function updateOperation() {
-
-}
-
-function finishOperation() {
-
-}
-
-function deleteOperation() {
-
+    let send = {
+      description: registerOperationObj.opDescriptionInput.value,
+      driver_id: Number(registerOperationObj.opDriverIDInput.value),
+      vehicle_id: Number(registerOperationObj.opAutomobileIDInput.value),
+    };
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: objBT.bearerToken,
+      },
+    };
+    options.body = JSON.stringify(send);
+  
+    fetch("http://localhost:3000/criaroperacao", options)
+      .then((response) => {
+        if (response.status != 201) {
+          if (response.status == 401) {
+            alert("Sessão expirada. Acesse novamente");
+            window.location.reload();
+          } else {
+            alert("Erro ao cadastrar operação. Tente novamente!");
+            window.location.reload();
+          }
+        } else {
+          return response.json();
+        }
+      })
+      .then((resp) => {
+        alert("Operação cadastrada com sucesso!");
+        window.location.reload();
+      })
+      .catch((err) => console.error(err));
 }
