@@ -34,7 +34,7 @@ navbar {
     width: auto;
 }
 
-#span {
+#span, #controlPanel {
     color: #06c406;
 }
 

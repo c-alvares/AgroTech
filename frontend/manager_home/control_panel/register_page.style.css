@@ -1,0 +1,25 @@
+.buttons3 p:nth-child(2) {
+    background-color: black;
+    color: #06c406;
+  }
+
+#userSection,
+#driverSection,
+#fleetSection,
+#maintainSection,
+#operationSection {
+    margin: 2vw;
+}
+
+
+  #closeForm1,
+  #closeForm2,
+  #closeForm3,
+  #closeForm4,
+  #closeForm5 {
+    font-size: 2rem;
+    width: 2.5vw;
+    margin: 1vh 1vw 2vh 1vw;
+    padding: .25vh .5vw;
+    border: 1px solid;
+  }

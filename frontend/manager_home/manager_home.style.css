@@ -67,12 +67,11 @@
   #close6 {
     font-size: 2rem;
     margin: 0vh 1vw 22vh 1vw;
-    padding: .5vw;
+    padding: .25vh .5vw;
     border: 1px solid;
-    border-radius: 100%;
   }
 
-  #buttons4 p{
+  #buttons4 p {
     background-color: black;
     color: #06c406;
   }

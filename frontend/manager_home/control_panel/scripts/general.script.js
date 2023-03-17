@@ -10,11 +10,11 @@ let b5 = document.querySelector('#buttons3 p');
 
 let h1 = document.querySelector("#buttons3 p:nth-child(2)");
 
-let close1 = document.querySelector('#close1');
-let close2 = document.querySelector('#close2');
-let close3 = document.querySelector('#close3');
-let close4 = document.querySelector('#close4');
-let close5 = document.querySelector('#close5');
+let close1 = document.querySelector('#closeForm1');
+let close2 = document.querySelector('#closeForm2');
+let close3 = document.querySelector('#closeForm3');
+let close4 = document.querySelector('#closeForm4');
+let close5 = document.querySelector('#closeForm5');
 
 let f1 = document.querySelector('.f1');
 let f2 = document.querySelector('.f2');
@@ -29,23 +29,23 @@ h1.addEventListener("click", () => {
 
 
 b1.addEventListener('click', () => {
-  f1.classList.remove('model')
-})
-
-b2.addEventListener('click', () => {
   f2.classList.remove('model')
 })
 
-b3.addEventListener('click', () => {
+b2.addEventListener('click', () => {
   f3.classList.remove('model')
 })
 
-b4.addEventListener('click', () => {
+b3.addEventListener('click', () => {
   f4.classList.remove('model')
 })
 
-b5.addEventListener('click', () => {
+b4.addEventListener('click', () => {
   f5.classList.remove('model')
+})
+
+b5.addEventListener('click', () => {
+  f1.classList.remove('model')
 })
 
 
