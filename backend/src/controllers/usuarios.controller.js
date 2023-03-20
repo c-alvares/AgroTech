@@ -1,76 +1,56 @@
-const { PrismaClient } = require('@prisma/client');
-const jwt = require('jsonwebtoken');
-require('dotenv').config();
+const { PrismaClient } = Require('@prisma/client');
+const jwt = Require('jsonwebtoken');
+Require('dotenv').config();
 
-const bcrypt = require('bcrypt'); // require bcrypt
+const bcrypt = Require('bcrypt'); // require bcrypt
 const saltRounds = 10; //  Data processing speed
 
 const prisma = new PrismaClient();
 
-// var password = "teste";  // Original Password
-// var password2 = "$2b$10$9S0D1Qq0Cbc8EQbhK5LVT.cGFk.Zhujh8wbzi91Lb9qMrWHaC.NGi";
+// const encryptedLogin = async (req, res) => {
+// https://heynode.com/blog/2020-04/salt-and-hash-passwords-bcrypt/
+    // bcrypt.compare(req.body.password, hash, function (err, result) {
 
-// bcrypt.hash(password, saltRounds, function(err, hash) {
-//     console.log(password, hash) // Salt + Hash
+    // })
+    // const user = await prisma.Users.findMany({
+    //     where: {
+    //         AND: [
+    //             { username: req.body.username },
+    //             { password: req.body.password }
+    //         ]
+    //     },
+    //     select: {
+    //         id: true,
+    //         name: true,
+    //         username: true,
+    //         management: true
+    //     }
+    // });
 
-//   bcrypt.compare(password2, hash, function(errCrypto, result) {  // Compare
-//     console.log(password2, hash, result)
-//     // if passwords match
-//     if (result) {
-//           console.log("It matches!")
-//     }
-//     // if passwords do not match
-//     else {
-//           console.log("Invalid password!");
-//     }
-//   });
-// });
-
-
-// const login = async (req, res) => {
-
-//     const user = await prisma.Users.findMany({
-//         where: {
-//             AND: [
-//                 { username: req.body.username },
-//             ]
-//         },
-//         select: {
-//             id: true,
-//             name: true,
-//             username: true,
-//             password: true,
-//             management: true
-//         }
-//     });
-  
-// console.log(req.body.password)
-//     bcrypt.hash(req.body.password, saltRounds, async function(err, hash) {
-//         console.log(hash)
-        
-//         bcrypt.compare(user[0].password, hash, function(errCrypto, result) {  // Compare
-//             console.log(user[0].password, hash, result)
-//             // if passwords match
-//             if (result) {
-//                   console.log("It matches!")
-//                   jwt.sign(user[0], process.env.KEY, { expiresIn: '30m' }, function (err, token) {
-//                       console.log(token);
-//                       if (err == null) {
-//                           user[0]["token"] = token;
-//                           res.status(200).json(user[0]).end();
-//                       }else {
-//                           res.status(401).json(err).end();
-//                       }
-//                   });
-//             }
-//             // if passwords do not match
-//             else {
-//                   console.log("Invalid password!");
-//                   res.status(401).json(err).end();
-//             }
-//           });
+    // bcrypt.compare(user[0].password, hash, function(errCrypto, result) {  // Compare
+    //         console.log(user[0].password, hash, result)
+    //         // if passwords match
+    //         if (result) {
+    //               console.log("It matches!")
+                //   jwt.sign(user[0], process.env.KEY, { expiresIn: '30m' }, function (err, token) {
+                //       console.log(token);
+                //       if (err == null) {
+                //           user[0]["token"] = token;
+                //           res.status(200).json(user[0]).end();
+                //       }else {
+                //           res.status(401).json(err).end();
+                //       }
+                //   });
+            // }
+            // if passwords do not match
+        //     else {
+        //           console.log("Invalid password!");
+        //           res.status(401).json(err).end();
+        //     }
+        //   });
           
-//     })
+    // }
+    // res.status(200).json(user).end();
 // }
 
 const login = async (req, res) => {
@@ -109,6 +89,21 @@ const login = async (req, res) => {
 const create = async (req, res) => {
     let user = await prisma.Users.create({
         data: req.body
+    });
+
+    res.status(201).json(user).end();
+}
+
+
+const creatEncrypted = async (req, res) => {
+    let user
+    bcrypt.hash(req.body.password, saltRounds, async function(errCrypto, hash) {
+        if(errCrypto == null) {
+            req.body.password = hash
+            user = await prisma.Users.create({
+                data: req.body
+            });
+        }
     });
 
     res.status(201).json(user).end();
@@ -177,7 +172,9 @@ const remove = async (req, res) => {
 
 module.exports = {
     login,
+    encryptedLogin,
     create,
+    creatEncrypted,
     read,
     readOne,
     update,

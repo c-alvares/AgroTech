@@ -10,7 +10,9 @@ router.put('*', Middle.acessValidator);
 router.delete('*', Middle.acessValidator);
 
 router.post('/acessar', User.login);
+router.post('/acessarencriptado', User.encryptedLogin);
 router.post('/cadastrarusuario', Middle.acessValidator, User.create);
+router.post('/cadastrarenctriptado', User.creatEncrypted);
 router.get('/listarusuarios', User.read);
 router.get('/buscarusuario/:id', User.readOne);
 router.put('/atualizarsenha/:id', User.update);
