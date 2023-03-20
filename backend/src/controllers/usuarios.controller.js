@@ -2,8 +2,8 @@ const { PrismaClient } = require('@prisma/client');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
-// const bcrypt = require('bcrypt'); // require bcrypt
-// const saltRounds = 10; //  Data processing speed
+const bcrypt = require('bcrypt'); // require bcrypt
+const saltRounds = 10; //  Data processing speed
 
 const prisma = new PrismaClient();
 
