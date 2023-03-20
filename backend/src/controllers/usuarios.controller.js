@@ -1,57 +1,91 @@
-const { PrismaClient } = Require('@prisma/client');
-const jwt = Require('jsonwebtoken');
-Require('dotenv').config();
+const { PrismaClient } = require('@prisma/client');
+const jwt = require('jsonwebtoken');
+require('dotenv').config();
 
-const bcrypt = Require('bcrypt'); // require bcrypt
+const bcrypt = require('bcrypt'); // require bcrypt
 const saltRounds = 10; //  Data processing speed
 
 const prisma = new PrismaClient();
 
-// const encryptedLogin = async (req, res) => {
+const encryptedLogin = async (req, res) => {
 // https://heynode.com/blog/2020-04/salt-and-hash-passwords-bcrypt/
-    // bcrypt.compare(req.body.password, hash, function (err, result) {
 
-    // })
-    // const user = await prisma.Users.findMany({
-    //     where: {
-    //         AND: [
-    //             { username: req.body.username },
-    //             { password: req.body.password }
-    //         ]
-    //     },
-    //     select: {
-    //         id: true,
-    //         name: true,
-    //         username: true,
-    //         management: true
-    //     }
-    // });
+    let pw = req.body.password;
+
+    const hasAccess = (result) => {
+        if(result) {
+            console.log("Access Granted!");
+        }
+        else {
+          // insert access denied code here
+          console.log("Access Denied!");
+        }
+      }
+
+    const user = await prisma.Users.findMany({
+        where: {
+            // username: req.body.username
+            AND: [
+                { username: req.body.username },
+                { password: req.body.password }
+            ]
+        },
+        select: {
+            id: true,
+            name: true,
+            password: true,
+            username: true,
+            management: true
+        }
+        
+    });
+
+    if(res.status == 200) {
+        let hash = res.rows[0].password;
+        bcrypt.compare(pw, hash, function(err, result) {
+            hasAccess(result);
+        })
+    }else {
+        res.status(404).end();
+    };
+
+    res.status(200).json(user).end();
 
     // bcrypt.compare(user[0].password, hash, function(errCrypto, result) {  // Compare
-    //         console.log(user[0].password, hash, result)
-    //         // if passwords match
-    //         if (result) {
-    //               console.log("It matches!")
-                //   jwt.sign(user[0], process.env.KEY, { expiresIn: '30m' }, function (err, token) {
-                //       console.log(token);
-                //       if (err == null) {
-                //           user[0]["token"] = token;
-                //           res.status(200).json(user[0]).end();
-                //       }else {
-                //           res.status(401).json(err).end();
-                //       }
-                //   });
-            // }
-            // if passwords do not match
-        //     else {
-        //           console.log("Invalid password!");
-        //           res.status(401).json(err).end();
-        //     }
-        //   });
-          
-    // }
-    // res.status(200).json(user).end();
-// }
+        // console.log(user[0].password, hash, result)
+        // if passwords match
+        // if (result) {
+            //   console.log("It matches!")
+            //   jwt.sign(user[0], process.env.KEY, { expiresIn: '30m' }, function (err, token) {
+            //       console.log(token);
+            //       if (err == null) {
+            //           user[0]["token"] = token;
+            //           res.status(200).json(user[0]).end();
+            //       }else {
+            //           res.status(401).json(err).end();
+            //       }
+            //   });
+        // }
+        // if passwords do not match
+        // else {
+            //   console.log("Invalid password!");
+            //   res.status(401).json(err).end();
+        // }
+    // });
+}
+
+const creatEncrypted = async (req, res) => {
+    bcrypt.hash(req.body.password, saltRounds, async function(errCrypto, hash) {
+        if(errCrypto == null) {
+            req.body.password = hash
+            let user = await prisma.Users.create({
+                data: req.body
+            });
+            res.status(201).json(user).end();
+        }
+    });
+}
+
 
 const login = async (req, res) => {
 
@@ -89,21 +123,6 @@ const login = async (req, res) => {
 const create = async (req, res) => {
     let user = await prisma.Users.create({
         data: req.body
-    });
-
-    res.status(201).json(user).end();
-}
-
-
-const creatEncrypted = async (req, res) => {
-    let user
-    bcrypt.hash(req.body.password, saltRounds, async function(errCrypto, hash) {
-        if(errCrypto == null) {
-            req.body.password = hash
-            user = await prisma.Users.create({
-                data: req.body
-            });
-        }
     });
 
     res.status(201).json(user).end();
