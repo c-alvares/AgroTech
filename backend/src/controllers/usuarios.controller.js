@@ -17,7 +17,14 @@ const encryptedLogin = async (req, res) => {
             jwt.sign(user, process.env.KEY, { expiresIn: '30m' }, function (err, token) {
                 if (err == null) {
                     user["token"] = token;
-                    res.status(200).json(user).end();
+                    let userFormated = {
+                        'id': user.id,
+                        'name': user.name,
+                        'username': user.username,
+                        'management': user.management,
+                        'token': user.token
+                    }
+                    res.status(200).json(userFormated).end();
                 }else {
                     res.status(401).json(err).end();
                 }
