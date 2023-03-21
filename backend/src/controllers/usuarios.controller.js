@@ -1,51 +1,39 @@
 const { PrismaClient } = require('@prisma/client');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
-const con = require("./agrotech.dao");
 
 const bcrypt = require('bcrypt'); // require bcrypt
 const saltRounds = 10; //  Data processing speed
 
 const prisma = new PrismaClient();
 
-const loginVariable = (model) => {
-    return `SELECT * FROM user WHERE user_name = '${model.user_name}' AND senha = '${model.senha}'`;
-}
-
-const test = (req, res) => {
-    con.query(loginVariable(req.body), (err, user) =>{
-        if (err == null) {
-            console.log("teste")
-        }else {
-            res.status(404).json(err).end();        
-        }
-    }); 
-   
-}
-
 const encryptedLogin = async (req, res) => {
 // https://heynode.com/blog/2020-04/salt-and-hash-passwords-bcrypt/
-
     let pw = req.body.password;
 
-    const hasAccess = (result) => {
+    const hasAccess = (result, user, res) => {
         if(result) {
             console.log("Access Granted!");
+            jwt.sign(user, process.env.KEY, { expiresIn: '30m' }, function (err, token) {
+                if (err == null) {
+                    user["token"] = token;
+                    res.status(200).json(user).end();
+                }else {
+                    res.status(401).json(err).end();
+                }
+            });
         }
         else {
-          // insert access denied code here
-          console.log("Access Denied!");
+            console.log("Access Denied!");
+            res.status(404).end();
         }
-      }
+    }
 
-    const user = await prisma.Users.findMany({
+    const user = await prisma.Users.findUnique({
         where: {
-            // username: req.body.username
-            AND: [
-                { username: req.body.username },
-                { password: req.body.password }
-            ]
-        },
+            username: req.body.username
+        }
+        ,
         select: {
             id: true,
             name: true,
@@ -53,42 +41,18 @@ const encryptedLogin = async (req, res) => {
             username: true,
             management: true
         }
-        
     });
 
-    if(res.status == 200) {
-        let hash = res.rows[0].password;
+    if(user != null) {
+        let hash = user.password;
         bcrypt.compare(pw, hash, function(err, result) {
-            hasAccess(result);
+            hasAccess(result, user, res);
         })
     }else {
         res.status(404).end();
     };
-
-    res.status(200).json(user).end();
-
-    // bcrypt.compare(user[0].password, hash, function(errCrypto, result) {  // Compare
-        // console.log(user[0].password, hash, result)
-        // if passwords match
-        // if (result) {
-            //   console.log("It matches!")
-            //   jwt.sign(user[0], process.env.KEY, { expiresIn: '30m' }, function (err, token) {
-            //       console.log(token);
-            //       if (err == null) {
-            //           user[0]["token"] = token;
-            //           res.status(200).json(user[0]).end();
-            //       }else {
-            //           res.status(401).json(err).end();
-            //       }
-            //   });
-        // }
-        // if passwords do not match
-        // else {
-            //   console.log("Invalid password!");
-            //   res.status(401).json(err).end();
-        // }
-    // });
 }
+
 
 const creatEncrypted = async (req, res) => {
     bcrypt.hash(req.body.password, saltRounds, async function(errCrypto, hash) {
@@ -120,7 +84,7 @@ const login = async (req, res) => {
         }
     });
 
-    if(user. length > 0) {
+    if(user.length > 0) {
         jwt.sign(user[0], process.env.KEY, { expiresIn: '30m' }, function (err, token) {
             // console.log(token);
             if (err == null) {
