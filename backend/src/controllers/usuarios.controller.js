@@ -1,11 +1,27 @@
 const { PrismaClient } = require('@prisma/client');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
+const con = require("./agrotech.dao");
 
 const bcrypt = require('bcrypt'); // require bcrypt
 const saltRounds = 10; //  Data processing speed
 
 const prisma = new PrismaClient();
+
+const loginVariable = (model) => {
+    return `SELECT * FROM user WHERE user_name = '${model.user_name}' AND senha = '${model.senha}'`;
+}
+
+const test = (req, res) => {
+    con.query(loginVariable(req.body), (err, user) =>{
+        if (err == null) {
+            console.log("teste")
+        }else {
+            res.status(404).json(err).end();        
+        }
+    }); 
+   
+}
 
 const encryptedLogin = async (req, res) => {
 // https://heynode.com/blog/2020-04/salt-and-hash-passwords-bcrypt/
