@@ -29,8 +29,7 @@ const encryptedLogin = async (req, res) => {
                     res.status(401).json(err).end();
                 }
             });
-        }
-        else {
+        }else {
             // console.log("Access Denied!");
             res.status(401).end();
         }
@@ -86,7 +85,7 @@ const readOne = async (req, res) => {
 const update = async (req, res) => {
     bcrypt.hash(req.body.password, saltRounds, async (errCrypto, hash) => {
         if(errCrypto == null) {
-            req.body.password = hash
+            req.body.password = hash;
 
             let { username, password } = req.body;
         
