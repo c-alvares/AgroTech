@@ -13,7 +13,7 @@ const encryptedLogin = async (req, res) => {
 
     const hasAccess = (result, user, res) => {
         if(result) {
-            console.log("Access Granted!");
+            // console.log("Access Granted!");
             jwt.sign(user, process.env.KEY, { expiresIn: '30m' }, function (err, token) {
                 if (err == null) {
                     user["token"] = token;
@@ -31,22 +31,14 @@ const encryptedLogin = async (req, res) => {
             });
         }
         else {
-            console.log("Access Denied!");
-            res.status(404).end();
+            // console.log("Access Denied!");
+            res.status(401).end();
         }
     }
 
     const user = await prisma.Users.findUnique({
         where: {
             username: req.body.username
-        }
-        ,
-        select: {
-            id: true,
-            name: true,
-            password: true,
-            username: true,
-            management: true
         }
     });
 
@@ -134,19 +126,24 @@ const readOne = async (req, res) => {
 
 
 const update = async (req, res) => {
-    let { username, password } = req.body;
+    bcrypt.hash(req.body.password, saltRounds, async (errCrypto, hash) => {
+        if(errCrypto == null) {
+            req.body.password = hash
 
-    let users = await prisma.Users.update({
-        where: {
-            id: Number(req.params.id)
-        },
-        data: {
-            username,
-            password
-        }
+            let { username, password } = req.body;
+        
+            let users = await prisma.Users.update({
+                where: {
+                    id: Number(req.params.id)
+                },
+                data: {
+                    username,
+                    password
+                }
+            });
+            res.status(200).json(users).end();
+        }else { throw errCrypto }
     });
-    
-    res.status(200).json(users).end();
 }
 
 
